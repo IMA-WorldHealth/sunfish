@@ -1,0 +1,44 @@
+extends ../layout.pug
+
+block content
+  .container
+    .columns
+      .column.col-12
+        table.table.table-striped
+          thead
+            tr
+              th ID
+              th Email Subject
+              th Cron
+              th Last Run
+              th Next Run
+              th Dashboards
+              th User Group
+              th Created
+              th(colspan=3) Actions
+          tbody
+            each row in schedules
+              tr
+                td #{row.id}
+                td #{row.subject}
+                td #{row.cron}
+                td(title=row.lastRunTime)
+                  i #{row.lastRunTimeLabel}
+                td(title=row.nextRunTime)
+                  i #{row.nextRunTimeLabel}
+                td(title=row.fmtDashboards) #{row.fmtDashboards}
+                td(title=row.userGroup.id) #{row.userGroup.displayName}
+                td(title=row.created) #{row.createdLabel}
+                td
+                  - const detailUrl = `/schedules/${row.id}/details`;
+                  a(href=detailUrl) View
+                td
+                  - const triggerUrl = `/schedules/${row.id}/trigger`;
+                  a(href=triggerUrl) Trigger
+                td
+                  - const url = `/schedules/${row.id}/delete`;
+                  a(href=url) Delete
+        br
+        a(href="schedules/create", data-add-loading).btn.btn-primary Add a new Schedule
+        .float-right
+          a(href="datasources/refresh", data-add-loading).btn.btn-primary Refresh Data Sources

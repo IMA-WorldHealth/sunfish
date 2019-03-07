@@ -1,0 +1,23 @@
+extends ../layout.pug
+
+block content
+  main.container
+    .columns
+      .column.col-5
+        h3 Signin to #{app.name}
+        form(name="login",method="POST",action="/auth/login")
+          .form-group
+            label.form-label Username
+            input(type="text",name="username")
+          .form-group
+            label.form-label Password
+            input(type="password",name="password")
+
+          button(type="submit", data-add-loading).btn.btn-primary
+            span Log In
+
+        <br />
+        .toast.toast-success
+          p.
+            Note that these are the same credentials used for the
+            #[a(href="https://ima-assp.org") https://ima-assp.org] instance.

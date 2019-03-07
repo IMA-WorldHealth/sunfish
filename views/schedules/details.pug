@@ -1,0 +1,49 @@
+extends ../layout.pug
+
+mixin formItem(label, value)
+  .tile.tile-centered
+    .tile-content
+      p.tile-title
+        strong #{label}
+      p.tile-subtitle #{value}
+  br
+
+block content
+  .container
+    .columns
+      .column.col-4
+        .panel
+          .panel-header
+            .panel-title Schedule Overview
+          .panel-body
+            +formItem("Email Subject", schedule.subject)
+
+            .tile.tile-centered
+              .tile-content
+                .tile-title
+                  strong Email Body
+                .panel
+                  .panel-body
+                    div(style="white-space: pre-wrap; padding:0.25em;") #{schedule.body}
+            br
+
+            +formItem("Frequency", schedule.cron)
+
+            +formItem("User Group", schedule.userGroup.displayName)
+
+            .tile.tile-centered
+              .tile-content
+                p.tile-title
+                  strong Dashboards
+                p.title-subtitle
+                  each dashboard in schedule.dashboards
+                    span.d-block
+                      a(href="#", title=dashboard.id) #{dashboard.displayName}
+
+
+      .column.col-4
+        .panel
+          .panel-header
+            .panel-title Schedule History
+          .panel-body
+            p This is the end my friend

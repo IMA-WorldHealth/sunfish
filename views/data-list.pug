@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content
+  .container
+    .columns
+      .column.col-6
+        .panel
+          .panel-header
+            .panel-title #{ header }
+          .panel-body(style="max-height:85vh;overflow:scroll;")
+            for item in data
+              div(title=item.id) #{item.displayName}

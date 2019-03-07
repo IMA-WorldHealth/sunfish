@@ -1,0 +1,49 @@
+n
+
+doctype html
+html
+  head
+    title #{title}
+    style
+      include ../node_modules/spectre.css/dist/spectre.min.css
+      include ../node_modules/spectre.css/dist/spectre-icons.min.css
+
+    style.
+      /* html, body { font-size : 12px; } */
+      body { background-color : #efefef; }
+
+  body
+    if user
+      header(style="padding:0.75em").navbar
+        section.navbar-section
+          a(href="/").navbar-brand.mr-2 #{app.name}
+          a(href="/schedules").btn.btn-link Schedules
+          a(href="/dashboards").btn.btn-link Dashboards
+          a(href="/users").btn.btn-link Users
+          a(href="/userGroups").btn.btn-link User Groups
+
+        section.navbar-section
+          a(href="/auth/logout").btn.btn-link Log Out
+
+    section.toasts
+      if messages.failure
+        .toast.toast-error #{messages.failure}
+      if messages.success
+        .toast.toast-success #{messages.success}
+      if messages.error
+        .toast.toast-error #{messages.error}
+
+    block content
+
+    script.
+      var elements = document.querySelectorAll('[data-add-loading]');
+
+      function addLoadingToNode(node) {
+        node.className += " loading"
+      }
+
+      elements.forEach(function (element) {
+        element.addEventListener('click', function () {
+          addLoadingToNode(element)
+        });
+      });

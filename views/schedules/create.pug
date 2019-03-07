@@ -1,0 +1,39 @@
+extends ../layout.pug
+
+block content
+  form(name="schedule",method="POST",action="/schedules/create")
+    .container
+      .columns
+        .column.col-12
+          h3 Adding a new Schedule
+        .column.col-4
+          .form-group
+            label.form-label Email Subject
+            input(type="text", name="subject", required).form-input
+
+          .form-group
+            label.form-label Email Body
+            textarea(name="body", rows="15", required).form-input
+
+          .form-group
+            label.form-label Frequency
+            input(type="text", name="cron", required).form-input
+
+        .column.col-4
+
+          .form-group
+            label.form-label User Group
+            select(name="userGroupId", required).form-select
+              option Choose a User Group
+              each group in userGroups
+                option(value=group.id).text-capitalize #{group.displayName}
+
+          .form-group
+            label.form-label Dashboards
+            select(name="dashboard-ids", size=8, required, multiple).form-select
+              each dashboard in dashboards
+                option(value=dashboard.id).text-capitalize #{dashboard.displayName}
+
+      br
+      button(type="submit", data-add-loading).btn.btn-primary
+        span + Create Schedule
