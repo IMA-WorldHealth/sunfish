@@ -2,9 +2,9 @@ extends ../layout.pug
 
 block content
   main.container
-    .columns
-      .column.col-5
-        h3 Signin to #{app.name}
+    div(style="display:flex;align-items:center;justify-content:center; height:100vh")
+      div(style="max-width:750px")
+        h3 Login to #{app.name}
         form(name="login",method="POST",action="/auth/login")
           .form-group
             label.form-label Username

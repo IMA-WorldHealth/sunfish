@@ -5,7 +5,6 @@ const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
-const path = require('path');
 
 const app = express();
 

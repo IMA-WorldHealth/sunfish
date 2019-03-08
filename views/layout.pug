@@ -1,5 +1,3 @@
-n
-
 doctype html
 html
   head
@@ -36,14 +34,15 @@ html
     block content
 
     script.
-      var elements = document.querySelectorAll('[data-add-loading]');
-
       function addLoadingToNode(node) {
         node.className += " loading"
       }
 
-      elements.forEach(function (element) {
-        element.addEventListener('click', function () {
-          addLoadingToNode(element)
+      var forms = document.querySelectorAll('form');
+      var elements = document.querySelectorAll('[data-add-loading]');
+
+      forms.forEach(function (form) {
+        form.addEventListener('submit', function () {
+          elements.forEach(addLoadingToNode);
         });
       });

@@ -31,13 +31,22 @@ block content
                 td(title=row.created) #{row.createdLabel}
                 td
                   - const detailUrl = `/schedules/${row.id}/details`;
-                  a(href=detailUrl) View
+                  a(href=detailUrl, data-tooltip="View the schedule").tooltip View
                 td
                   - const triggerUrl = `/schedules/${row.id}/trigger`;
-                  a(href=triggerUrl) Trigger
+                  a(href=triggerUrl, data-tooltip="Trigger a run of the schedule").tooltip Trigger
                 td
                   - const url = `/schedules/${row.id}/delete`;
-                  a(href=url) Delete
+                  a(href=url, data-tooltip="Deletes the tooltip.\nWarning! This cannot be undone.").tooltip.tooltip-left Delete
+
+
+        unless schedules.length
+          .empty
+            .empty-icon
+              i.icon.icon-3x.icon-bookmark
+            p.empty-title.h4 There are no schedules registered
+            p.empty-subtitle Click the "add a new schedule" button to create your first schedule
+
         br
         a(href="schedules/create", data-add-loading).btn.btn-primary Add a new Schedule
         .float-right

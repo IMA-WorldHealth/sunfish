@@ -59,7 +59,7 @@ router.post('/login',
   }), postLogin);
 
 router.get('/login', (req, res) => {
-  res.render('auth/login', { title: 'Login to Scooner' });
+  res.render('auth/login', { title: `Login to ${process.env.APP_NAME}` });
 });
 
 router.get('/logout', (req, res) => {
