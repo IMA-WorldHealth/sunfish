@@ -1,7 +1,10 @@
 doctype html
 html
   head
-    title #{title}
+    if title
+      title #{title}
+    else
+      title #{app.name}
     style
       include ../node_modules/spectre.css/dist/spectre.min.css
       include ../node_modules/spectre.css/dist/spectre-icons.min.css
