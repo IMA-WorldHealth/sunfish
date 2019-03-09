@@ -35,17 +35,3 @@ html
         .toast.toast-error #{messages.error}
 
     block content
-
-    script.
-      function addLoadingToNode(node) {
-        node.className += " loading"
-      }
-
-      var forms = document.querySelectorAll('form');
-      var elements = document.querySelectorAll('[data-add-loading]');
-
-      forms.forEach(function (form) {
-        form.addEventListener('submit', function () {
-          elements.forEach(addLoadingToNode);
-        });
-      });
