@@ -1,7 +1,7 @@
 extends ../layout.pug
 
 block content
-  form(name="schedule",method="POST",action="/schedules/create")
+  form(name="schedule",method="POST",action="/schedules/create", autocomplete="off")
     .container
       .columns
         .column.col-12
@@ -9,15 +9,15 @@ block content
         .column.col-4
           .form-group
             label.form-label Email Subject
-            input(type="text", name="subject", required).form-input
+            input(type="text", name="subject", required, autocomplete="off").form-input
 
           .form-group
             label.form-label Email Body
-            textarea(name="body", rows="15", required).form-input
+            textarea(name="body", rows="15", required, autocomplete="off").form-input
 
           .form-group
             label.form-label Frequency
-            input(type="text", name="cron", required).form-input
+            input(type="text", name="cron", required, autocomplete="off").form-input
 
         .column.col-4
 
