@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@ima-worldhealth/dhis2-api": "^0.0.6",
-    "@ima-worldhealth/dhis2-crawler": "^0.0.9",
+    "@ima-worldhealth/dhis2-crawler": "^0.0.10",
     "connect-redis": "^3.4.0",
     "cron-parser": "^2.7.3",
     "cron-scheduler": "^1.2.0",

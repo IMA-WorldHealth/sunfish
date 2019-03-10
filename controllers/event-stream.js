@@ -22,6 +22,7 @@ router.get('/schedule', (req, res) => {
 
     res.write(`id: ${Date.now()}\n`);
     res.write(`data: ${JSON.stringify(datapacket)}\n\n`);
+    res.flushHeaders();
   });
 });
 
