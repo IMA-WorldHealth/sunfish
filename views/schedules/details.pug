@@ -44,6 +44,9 @@ block content
       .column.col-4
         .panel
           .panel-header
-            .panel-title Schedule History
+            .panel-title Schedule Log
           .panel-body
-            p This is the end my friend
+            l#event-output
+
+    script(type="text/javascript")
+      include ../includes/event-stream.js
