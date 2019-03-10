@@ -2,6 +2,7 @@ const express = require('express');
 const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
 const shortid = require('shortid');
+const cronparser = require('cron-parser');
 const db = require('../lib/db');
 const attendant = require('../lib/attendant');
 const executor = require('../lib/executor');
@@ -46,6 +47,16 @@ router.post('/create', (req, res) => {
   const schedules = db.getCollection('schedules');
   const dashboards = db.getCollection('dashboards');
   const userGroups = db.getCollection('userGroups');
+
+  // try parsing the cron syntax.
+  try {
+    const parsed = cronparser.parseExpression(req.body.cron);
+    req.body.nextRunTime = parsed.next().toDate();
+  } catch (e) {
+    req.flash('error', 'Your cron syntax is not correct.  Please enter a valid cron syntax to create a schedule.');
+    res.redirect('/schedules/create');
+    return;
+  }
 
   try {
     // gather principle data

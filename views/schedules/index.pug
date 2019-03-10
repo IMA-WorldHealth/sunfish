@@ -9,7 +9,7 @@ block content
             tr
               th ID
               th Email Subject
-              th Cron
+              th Cron Syntax
               th Last Run
               th Next Run
               th Dashboards
@@ -23,7 +23,10 @@ block content
                 td #{row.subject}
                 td #{row.cron}
                 td(title=row.lastRunTime)
-                  i #{row.lastRunTimeLabel}
+                  if row.lastRunTime
+                    i #{row.lastRunTimeLabel}
+                  else
+                    i ---
                 td(title=row.nextRunTime)
                   i #{row.nextRunTimeLabel}
                 td(title=row.fmtDashboards) #{row.fmtDashboards}
