@@ -7,7 +7,6 @@ block content
         table.table.table-striped
           thead
             tr
-              th ID
               th Email Subject
               th Cron Syntax
               th Last Run
@@ -19,7 +18,6 @@ block content
           tbody
             each row in schedules
               tr
-                td #{row.id}
                 td #{row.subject}
                 td #{row.cron}
                 td(title=row.lastRunTime)
