@@ -1,11 +1,9 @@
 const router = require('express').Router();
 
-const users = require('./users');
 const userGroups = require('./userGroups');
 const dashboards = require('./dashboards');
 
 router.get('/refresh', (req, res) => {
-  users.refreshUserList();
   userGroups.refreshUserGroupList();
   dashboards.refreshDashboardList();
 

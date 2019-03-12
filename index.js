@@ -45,7 +45,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/schedules', require('./controllers/schedules'));
-app.use('/users', require('./controllers/users'));
 app.use('/userGroups', require('./controllers/userGroups'));
 app.use('/dashboards', require('./controllers/dashboards'));
 
