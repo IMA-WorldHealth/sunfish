@@ -1,0 +1,69 @@
+{
+  "LOGIN": {
+    "SUBMIT": "Se Connecter",
+    "USERNAME": "Nom d'utilisateur",
+    "PASSWORD": "Mot de passe",
+    "NOTE": "Notez qu'il s'agit des mêmes informations d'identification que celles utilisées pour l'instance ima-assp.org",
+    "APP": "Se connecter à {{app.name}}",
+    "LOGOUT" : "Se déconnecter"
+  },
+
+  "ERRORS": {
+    "CRON": "Erreur! Impossible d'analyser le calendrier. La syntaxe cron \"{{cron}}}\" n'est pas valide.",
+    "GENERIC": "Oups! Une erreur s'est produite avec le code {{code}}."
+  },
+
+  "SCHEDULES": {
+    "ACTIONS": "Actes",
+    "ADD": "Ajouter un nouvel horaire",
+    "BODY": "Message",
+    "CREATED": "Créé",
+    "CREATE_SUCCESS": "Création réussie d'une planification {{frequency}}.",
+    "DASHBOARDS": "Tableaux de bord",
+    "DELETE_SUCCESS": "Supprimé avec succès l'horaire.",
+    "EMPTY_SUBTITLE": "Cliquez sur le bouton \"ajouter un nouvel horaire\" pour créer votre premier horaire.",
+    "EMPTY_TITLE": "Il n'y a pas d'horaires enregistrés",
+    "FREQUENCY": "La fréquence",
+    "FREQUENCY_SELECT": "Sélectionnez une fréquence",
+    "GROUP": "Groupe d'utilisateurs",
+    "GROUP_SELECT": "Choisissez un groupe d'utilisateurs",
+    "LAST_RUN": "Dernière exécution",
+    "LOG" : "Registre",
+    "NEXT_RUN": "Prochaine exécution",
+    "OVERVIEW" : "Détails",
+    "SUBJECT": "Sujet",
+    "SUBMIT": "Créer un horaire",
+    "TITLE" : "Les horaires"
+  },
+
+  "ACTIONS": {
+    "TRIGGER": "Déclencher",
+    "DELETE": "Effacer",
+    "VIEW": "Voir"
+  },
+
+  "TOOLTIPS":{
+    "VIEW": "Voir l'horaire",
+    "TRIGGER": "Déclenche le programme pour qu'il s'exécute immédiatement",
+    "DELETE": "Supprimer l'horaire. \nAttention! Ça ne peut pas être annulé."
+  },
+
+  "DAYS": {
+    "SUNDAY": "Dimanche",
+    "MONDAY": "Lundi",
+    "TUESDAY": "Mardi",
+    "WEDNESDAY": "Mercredi",
+    "THURSDAY": "Jeudi",
+    "FRIDAY": "Vendredi",
+    "SATURDAY": "Samedi"
+  },
+
+  "FREQUENCY": {
+    "DAILY": "Journalier",
+    "WEEKLY": "Hebdomadaire",
+    "MONTHLY": "Mensuel",
+    "PICK_DAY_OF_MONTH": "Choisissez le jour du mois",
+    "PICK_DAY_OF_WEEK": "Choisissez le jour de la semaine",
+    "PICK_HOUR": "Choisissez l'heure du jour"
+  }
+}

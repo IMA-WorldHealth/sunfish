@@ -22,10 +22,10 @@ html
       header(style="padding:0.75em").navbar
         section.navbar-section
           a(href="/").navbar-brand.mr-2 #{app.name}
-          a(href="/schedules").btn.btn-link Schedules
+          a(href="/schedules").btn.btn-link #{t('SCHEDULES.TITLE')}
 
         section.navbar-section
-          a(href="/auth/logout").btn.btn-link Log Out
+          a(href="/auth/logout").btn.btn-link #{t('LOGIN.LOGOUT')}
 
     section.toasts
       if messages.failure

@@ -4,24 +4,21 @@ block content
   main.container
     div(style="display:flex;align-items:center;justify-content:center; height:100vh")
       div(style="max-width:750px")
-        h3 Login to #{app.name}
+        h3 #{t('LOGIN.APP', { app })}
         form(name="login",method="POST",action="/auth/login", autocomplete="off")
           .form-group
-            label.form-label Username
+            label.form-label #{t('LOGIN.USERNAME')}
             input(type="text",name="username", autocomplete="off")
           .form-group
-            label.form-label Password
+            label.form-label #{t('LOGIN.PASSWORD')}
             input(type="password",name="password")
 
           button(type="submit", data-add-loading).btn.btn-primary
-            span Log In
+            span #{t('LOGIN.SUBMIT')}
 
         <br />
         .toast.toast-success
-          p.
-            Note that these are the same credentials used for the
-            #[a(href="https://ima-assp.org") https://ima-assp.org] instance.
-
+          p #{t('LOGIN.NOTE')}
 
   script(type="text/javascript")
     include ../includes/forms.js

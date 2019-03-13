@@ -4,7 +4,7 @@ mixin formItem(label, value)
   .tile.tile-centered
     .tile-content
       p.tile-title
-        strong #{label}
+        strong #{t(label)}
       p.tile-subtitle #{value}
   br
 
@@ -14,37 +14,36 @@ block content
       .column.col-4
         .panel
           .panel-header
-            .panel-title Schedule Overview
+            .panel-title #{t('SCHEDULES.OVERVIEW')}
           .panel-body
-            +formItem("Email Subject", schedule.subject)
+            +formItem("SCHEDULES.SUBJECT", schedule.subject)
 
             .tile.tile-centered
               .tile-content
                 .tile-title
-                  strong Email Body
+                  strong #{t('SCHEDULES.BODY')}
                 .panel
                   .panel-body
                     div(style="white-space: pre-wrap; padding:0.25em;") #{schedule.body}
             br
 
-            +formItem("Frequency", schedule.frequency)
+            +formItem("SCHEDULES.FREQUENCY", schedule.frequency)
 
-            +formItem("User Group", schedule.userGroup.displayName)
+            +formItem("SCHEDULES.GROUP", schedule.userGroup.displayName)
 
             .tile.tile-centered
               .tile-content
                 p.tile-title
-                  strong Dashboards
+                  strong #{t('SCHEDULES.DASHBOARDS')}
                 p.title-subtitle
                   each dashboard in schedule.dashboards
                     span.d-block
                       a(href="#", title=dashboard.id) #{dashboard.displayName}
 
-
       .column.col-4
         .panel
           .panel-header
-            .panel-title Schedule Log
+            .panel-title #{t('SCHEDULES.LOG')}
           .panel-body
             l#event-output
 

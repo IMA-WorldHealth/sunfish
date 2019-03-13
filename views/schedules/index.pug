@@ -7,14 +7,14 @@ block content
         table.table.table-striped
           thead
             tr
-              th Email Subject
-              th Frequency
-              th Last Run
-              th Next Run
-              th Dashboards
-              th User Group
-              th Created
-              th(colspan=3) Actions
+              th #{t('SCHEDULES.SUBJECT')}
+              th #{t('SCHEDULES.FREQUENCY')}
+              th #{t('SCHEDULES.LAST_RUN')}
+              th #{t('SCHEDULES.NEXT_RUN')}
+              th #{t('SCHEDULES.DASHBOARDS')}
+              th #{t('SCHEDULES.GROUP')}
+              th #{t('SCHEDULES.CREATED')}
+              th(colspan=3) #{t('SCHEDULES.ACTIONS')}
           tbody
             each row in schedules
               tr
@@ -32,23 +32,21 @@ block content
                 td(title=row.created) #{row.createdLabel}
                 td
                   - const detailUrl = `/schedules/${row.id}/details`;
-                  a(href=detailUrl, data-tooltip="View the schedule").tooltip View
+                  a(href=detailUrl, data-tooltip=t('TOOLTIPS.VIEW')).tooltip #{t('ACTIONS.VIEW')}
                 td
                   - const triggerUrl = `/schedules/${row.id}/trigger`;
-                  a(href=triggerUrl, data-tooltip="Trigger a run of the schedule").tooltip Trigger
+                  a(href=triggerUrl, data-tooltip=t('TOOLTIPS.TRIGGER')).tooltip #{t('ACTIONS.TRIGGER')}
                 td
                   - const url = `/schedules/${row.id}/delete`;
-                  a(href=url, data-tooltip="Deletes the tooltip.\nWarning! This cannot be undone.").tooltip.tooltip-left Delete
+                  a(href=url, data-tooltip=t('TOOLTIPS.DELETE')).tooltip.tooltip-left #{t('ACTIONS.DELETE')}
 
 
         unless schedules.length
           .empty
             .empty-icon
               i.icon.icon-3x.icon-bookmark
-            p.empty-title.h4 There are no schedules registered
-            p.empty-subtitle Click the "add a new schedule" button to create your first schedule
+            p.empty-title.h4 #{t('SCHEDULES.EMPTY_TITLE')}
+            p.empty-subtitle #{t('SCHEDULES.EMPTY_SUBTITLE')}
 
         br
-        a(href="schedules/create", data-add-loading).btn.btn-primary Add a new Schedule
-        .float-right
-          a(href="datasources/refresh", data-add-loading).btn.btn-primary Refresh Data Sources
+        a(href="schedules/create", data-add-loading).btn.btn-primary #{t('SCHEDULES.ADD')}

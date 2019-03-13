@@ -54,7 +54,7 @@ router.post('/create', (req, res) => {
   try {
     cronparser.parseExpression(req.body.cron);
   } catch (e) {
-    req.flash('error', 'Your cron syntax is not correct.  Please enter a valid cron syntax to create a schedule.');
+    req.flash('error', req.t('ERRORS.CRON', { cron: req.body.cron }));
     res.redirect('/schedules/create');
     return;
   }
@@ -78,10 +78,10 @@ router.post('/create', (req, res) => {
 
     schedules.insert(data);
 
-    req.flash('success', 'Successfully created a schedule.');
+    req.flash('success', req.t('SCHEDULES.CREATE_SUCCESS', data));
     res.redirect('/schedules');
   } catch (e) {
-    req.flash('error', 'An error occurred!'.concat(e.toString()));
+    req.flash('error', req.t('ERRORS.GENERIC', e));
     res.redirect('/schedules/create');
   }
 });
@@ -96,7 +96,7 @@ router.get('/:id/delete', (req, res) => {
 
   schedules.findAndRemove({ id: req.params.id });
 
-  req.flash('success', `Successfully removed schedule with id ${req.params.id}`);
+  req.flash('success', req.t('SCHEDULES.DELETE_SUCCESS'));
   res.redirect('/schedules');
 
   // queue a rescan of the fields in the database

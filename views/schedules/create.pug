@@ -5,52 +5,52 @@ block content
     .container
       .columns
         .column.col-12
-          h3 Adding a new Schedule
+          h3 #{t('SCHEDULES.ADD')}
         .column.col-5
           .form-group
-            label.form-label Email Subject
+            label.form-label #{t('SCHEDULES.SUBJECT')}
             input(type="text", name="subject", required, autocomplete="off").form-input
 
           .form-group
-            label.form-label Email Body
+            label.form-label #{t('SCHEDULES.BODY')}
             textarea(name="body", rows="20", required, autocomplete="off").form-input
 
         .column.col-5
 
           .form-group
-            label.form-label User Group
+            label.form-label #{t('SCHEDULES.GROUP')}
             select(name="userGroupId", required).form-select
-              option(disabled, selected) Choose a User Group
+              option(disabled, selected) #{t('SCHEDULES.GROUP_SELECT')}
               each group in userGroups
                 option(value=group.id).text-capitalize #{group.displayName}
 
           .form-group
-            label.form-label Dashboards
+            label.form-label #{t('SCHEDULES.DASHBOARDS')}
             select(name="dashboard-ids", size=8, required, multiple).form-select
               each dashboard in dashboards
                 option(value=dashboard.id).text-capitalize #{dashboard.displayName}
 
           .form-group#frequency
-            label.form-label Frequency
+            label.form-label #{t('SCHEDULES.FREQUENCY')}
             select(name="frequency", required).form-select.text-capitalize
-              option(disabled, selected) Choose a Frequency
-              each option in ["daily", "weekly", "monthly"]
-                option(value=option) #{option}
+              option(disabled, selected) #{t('SCHEDULES.FREQUENCY_SELECT')}
+              each option, key in { "daily" : "FREQUENCY.DAILY", "weekly" : "FREQUENCY.WEEKLY", "monthly" : "FREQUENCY.MONTHLY" }
+                option(value=key) #{t(option)}
 
           .form-group.d-invisible#day-of-month
-            label.form-label Pick the Day of the Month
+            label.form-label #{t('FREQUENCY.PICK_DAY_OF_MONTH')}
             select(name="day-of-month", required).form-select.text-capitalize
               each option in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
                 option(value=option) #{option}
 
           .form-group.d-invisible#day-of-week
-            label.form-label Pick the Day of the Week
+            label.form-label #{t('FREQUENCY.PICK_DAY_OF_WEEK')}
             select(name="day-of-week", required).form-select.text-capitalize
-              each option, index in ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-                option(value=index) #{option}
+              each option, index in ['DAYS.SUNDAY', 'DAYS.MONDAY', 'DAYS.TUESDAY', 'DAYS.WEDNESDAY', 'DAYS.THURSDAY', 'DAYS.FRIDAY', 'DAYS.SATURDAY']
+                option(value=index) #{t(option)}
 
           .form-group.d-invisible#hour-of-day
-            label.form-label Pick the Hour of the Day
+            label.form-label #{t('FREQUENCY.PICK_HOUR')}
             select(name="hour-of-day", required).form-select.text-capitalize
               each option in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
                 option(value=option) #{option}:00
@@ -59,7 +59,7 @@ block content
 
       br
 
-      button(type="submit", data-add-loading).btn.btn-primary + Create Schedule
+      button(type="submit", data-add-loading).btn.btn-primary + #{t('SCHEDULES.SUBMIT')}
 
   script(type="text/javascript")
     include ../includes/forms.js

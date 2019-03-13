@@ -1,0 +1,69 @@
+{
+  "LOGIN": {
+    "SUBMIT": "Log In",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "NOTE": "Note that these are the same credentials used for the ima-assp.org instance",
+    "APP": "Login to {{app.name}}",
+    "LOGOUT" : "Log Out"
+  },
+
+  "ERRORS": {
+    "CRON": "Error!  Could not parse the schedule.  The cron syntax \"{{cron}}\" is invalid.",
+    "GENERIC": "Whoops!  An error occurred with code {{code}}."
+  },
+
+  "SCHEDULES": {
+    "ACTIONS": "Actions",
+    "ADD": "Add a new Schedule",
+    "BODY": "Email Body",
+    "CREATED": "Created",
+    "CREATE_SUCCESS": "Successfully created a {{frequency}} schedule.",
+    "DASHBOARDS": "Dashboards",
+    "DELETE_SUCCESS": "Successfully removed the schedule.",
+    "EMPTY_SUBTITLE": "Click the \"add a new schedule\" button to create your first schedule",
+    "EMPTY_TITLE": "There are no schedules registered",
+    "FREQUENCY": "Frequency",
+    "FREQUENCY_SELECT": "Select a Frequency",
+    "GROUP": "User Group",
+    "GROUP_SELECT": "Choose a User Group",
+    "LAST_RUN": "Last Run",
+    "LOG" : "Schedule Log",
+    "NEXT_RUN": "Next Run",
+    "OVERVIEW" : "Overview",
+    "SUBJECT": "Email Subject",
+    "SUBMIT": "Create a Schedule",
+    "TITLE" : "Schedules"
+  },
+
+  "ACTIONS": {
+    "TRIGGER": "Trigger",
+    "DELETE": "Delete",
+    "VIEW": "View"
+  },
+
+  "TOOLTIPS":{
+    "VIEW": "View the schedule",
+    "TRIGGER": "Trigger the schedule to run immediately",
+    "DELETE": "Delete the schedule. \nWarning! This cannot be undone."
+  },
+
+  "DAYS": {
+    "SUNDAY": "Sunday",
+    "MONDAY": "Monday",
+    "TUESDAY": "Tuesday",
+    "WEDNESDAY": "Wednesday",
+    "THURSDAY": "Thursday",
+    "FRIDAY": "Friday",
+    "SATURDAY": "Saturday"
+  },
+
+  "FREQUENCY": {
+    "DAILY": "Daily",
+    "WEEKLY": "Weekly",
+    "MONTHLY": "Monthly",
+    "PICK_DAY_OF_MONTH": "Pick the Day of the Month",
+    "PICK_DAY_OF_WEEK": "Pick the Day of the Week",
+    "PICK_HOUR": "Pick the Hour of the Day"
+  }
+}

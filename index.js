@@ -5,6 +5,10 @@ const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
+const i18next = require('i18next');
+const i18nextBackend = require('i18next-node-fs-backend');
+const i18nextMiddleware = require('i18next-express-middleware');
+const path = require('path');
 
 const app = express();
 
@@ -24,6 +28,19 @@ app.use(passport.session());
 
 app.use(flash());
 
+// preload english and french dictionaries
+i18next
+  .use(i18nextMiddleware.LanguageDetector)
+  .use(i18nextBackend)
+  .init({
+    preload: ['en', 'fr'],
+    backend: { loadPath: path.join(__dirname, '/locales/{{lng}}/{{lng}}.json') },
+  });
+
+// make it so that we don't have issues with language
+app.use(i18nextMiddleware.handle(i18next, {
+  removeLngFromUrl: true,
+}));
 
 app.use((req, res, next) => {
   res.locals.app = {
@@ -31,6 +48,9 @@ app.use((req, res, next) => {
     name: process.env.APP_NAME,
     email: process.env.APP_EMAIL,
   };
+
+  console.log('req.language:', req.language);
+
   next();
 });
 
