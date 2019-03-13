@@ -6,21 +6,16 @@ block content
       .columns
         .column.col-12
           h3 Adding a new Schedule
-        .column.col-4
+        .column.col-5
           .form-group
             label.form-label Email Subject
             input(type="text", name="subject", required, autocomplete="off").form-input
 
           .form-group
             label.form-label Email Body
-            textarea(name="body", rows="15", required, autocomplete="off").form-input
+            textarea(name="body", rows="20", required, autocomplete="off").form-input
 
-          .form-group
-            label.form-label Frequency
-            input(type="text", name="cron", required, autocomplete="off").form-input
-            p.form-input-hint Don't know what this is?  Check out #[a(href="https://crontab.guru/") crontab.guru] for accepted syntax.
-
-        .column.col-4
+        .column.col-5
 
           .form-group
             label.form-label User Group
@@ -35,9 +30,39 @@ block content
               each dashboard in dashboards
                 option(value=dashboard.id).text-capitalize #{dashboard.displayName}
 
+          .form-group#frequency
+            label.form-label Frequency
+            select(name="frequency", required).form-select.text-capitalize
+              option(disabled, selected) Choose a Frequency
+              each option in ["daily", "weekly", "monthly"]
+                option(value=option) #{option}
+
+          .form-group.d-invisible#day-of-month
+            label.form-label Pick the Day of the Month
+            select(name="day-of-month", required).form-select.text-capitalize
+              each option in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+                option(value=option) #{option}
+
+          .form-group.d-invisible#day-of-week
+            label.form-label Pick the Day of the Week
+            select(name="day-of-week", required).form-select.text-capitalize
+              each option, index in ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+                option(value=index) #{option}
+
+          .form-group.d-invisible#hour-of-day
+            label.form-label Pick the Hour of the Day
+            select(name="hour-of-day", required).form-select.text-capitalize
+              each option in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+                option(value=option) #{option}:00
+
+          input(type="hidden", name="cron")
+
       br
 
       button(type="submit", data-add-loading).btn.btn-primary + Create Schedule
 
   script(type="text/javascript")
     include ../includes/forms.js
+
+  script(type="text/javascript")
+    include ../includes/create.js

@@ -10,8 +10,12 @@ html
       include ../node_modules/spectre.css/dist/spectre-icons.min.css
 
     style.
-      /* html, body { font-size : 12px; } */
       body { background-color : #efefef; }
+
+      /* modification to make invisible cells collapse */
+      .d-invisible {
+        height: 0px;
+      }
 
   body
     if user
