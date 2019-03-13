@@ -19,11 +19,13 @@ router.get('/', (req, res) => {
     const createdLabel = dayjs(schedule.created).fromNow();
     Object.assign(schedule, { fmtDashboards, createdLabel });
 
-    if (schedule.nextRunTime) {
-      const nextRunTimeLabel = dayjs(schedule.nextRunTime).fromNow();
-      Object.assign(schedule, { nextRunTimeLabel });
-    }
+    // assign the next run time by parsing the cron
+    const parsed = cronparser.parseExpression(schedule.cron);
+    const nextRunTimeDate = parsed.next().toDate();
+    const nextRunTimeLabel = dayjs(nextRunTimeDate).fromNow();
+    Object.assign(schedule, { nextRunTimeLabel, nextRunTime: nextRunTimeDate });
 
+    // add in last runtime if exists
     if (schedule.lastRunTime) {
       const lastRunTimeLabel = dayjs(schedule.lastRunTime).fromNow();
       Object.assign(schedule, { lastRunTimeLabel });
@@ -50,8 +52,7 @@ router.post('/create', (req, res) => {
 
   // try parsing the cron syntax.
   try {
-    const parsed = cronparser.parseExpression(req.body.cron);
-    req.body.nextRunTime = parsed.next().toDate();
+    cronparser.parseExpression(req.body.cron);
   } catch (e) {
     req.flash('error', 'Your cron syntax is not correct.  Please enter a valid cron syntax to create a schedule.');
     res.redirect('/schedules/create');

@@ -8,7 +8,6 @@ block content
           thead
             tr
               th Email Subject
-              th Cron Syntax
               th Last Run
               th Next Run
               th Dashboards
@@ -19,7 +18,6 @@ block content
             each row in schedules
               tr
                 td #{row.subject}
-                td #{row.cron}
                 td(title=row.lastRunTime)
                   if row.lastRunTime
                     i #{row.lastRunTimeLabel}
