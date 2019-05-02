@@ -1,4 +1,4 @@
-require('dotenv').load();
+require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const passport = require('passport');
