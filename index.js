@@ -1,16 +1,20 @@
 require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
+
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
+const Redis = require('ioredis');
 const RedisStore = require('connect-redis')(session);
+
 const i18next = require('i18next');
 const i18nextBackend = require('i18next-node-fs-backend');
 const i18nextMiddleware = require('i18next-express-middleware');
 const path = require('path');
 
 const app = express();
+const client = new Redis();
 
 app.use(helmet());
 
@@ -20,7 +24,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
-  store: new RedisStore(), resave: true, saveUninitialized: true, secret: 'b1e9d8a4-39a4-11e9-b7e2-03fe5e35051c',
+  store: new RedisStore({ client }),
+  resave: true,
+  saveUninitialized: true,
+  secret: 'b1e9d8a4-39a4-11e9-b7e2-03fe5e35051c',
 }));
 
 app.use(passport.initialize());
@@ -48,8 +55,6 @@ app.use((req, res, next) => {
     name: process.env.APP_NAME,
     email: process.env.APP_EMAIL,
   };
-
-  console.log('req.language:', req.language);
 
   next();
 });
