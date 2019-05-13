@@ -26,7 +26,10 @@ block content
                   else
                     i ---
                 td(title=row.nextRunTime)
-                  i #{row.nextRunTimeLabel}
+                  if row.paused
+                    i.text-gray paused
+                  else
+                    i #{row.nextRunTimeLabel}
                 td(title=row.fmtDashboards) #{row.fmtDashboards}
                 td(title=row.userGroup.id) #{row.userGroup.displayName}
                 td(title=row.created) #{row.createdLabel}
@@ -35,19 +38,38 @@ block content
                     a(href="#", tabindex="0").btn.btn-link.dropdown-toggle #{t('SCHEDULES.ACTIONS')}
                       i.icon.icon-caret
 
-                    ul.menu
+                    ul(style="width:200px;").menu
 
                       li.menu-item
                         - const detailUrl = `/schedules/${row.id}/details`;
-                        a(href=detailUrl).text-primary #{t('ACTIONS.VIEW')}
+                        a(href=detailUrl).text-primary
+                          i.icon.icon-edit
+                          span(style="padding-left:0.6em;") #{t('ACTIONS.VIEW')}
 
                       li.menu-item
                         - const triggerUrl = `/schedules/${row.id}/trigger`;
-                        a(href=triggerUrl).text-success #{t('ACTIONS.TRIGGER')}
+                        a(href=triggerUrl).text-success
+                          i.icon.icon-refresh
+                          span(style="padding-left:0.6em;") #{t('ACTIONS.TRIGGER')}
+
+                      li.menu-item
+                        - const pauseUrl = `/schedules/${row.id}/pause`;
+                        if !row.paused
+                          a(href=pauseUrl).text-warning
+                            i.icon.icon-stop
+                            span(style="padding-left:0.6em;") #{t('ACTIONS.PAUSE')}
+                        else
+                          a(href=pauseUrl).text-primary
+                            i.icon.icon-check
+                            span(style="padding-left:0.6em;") #{t('ACTIONS.UNPAUSE')}
+
+                      li.divider
 
                       li.menu-item
                         - const deleteUrl = `/schedules/${row.id}/delete`;
-                        a(href=deleteUrl).text-error #{t('ACTIONS.DELETE')}
+                        a(href=deleteUrl).text-error
+                          i.icon.icon-delete
+                          span(style="padding-left:0.6em;") #{t('ACTIONS.DELETE')}
 
         unless schedules.length
           .empty

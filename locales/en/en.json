@@ -33,13 +33,17 @@
     "OVERVIEW" : "Overview",
     "SUBJECT": "Email Subject",
     "SUBMIT": "Create a Schedule",
-    "TITLE" : "Schedules"
+    "TITLE" : "Schedules",
+    "PAUSE_SUCCESS" : "Paused the schedule successfully",
+    "UNPAUSE_SUCCESS" : "Schedule has been reactivated successfully"
   },
 
   "ACTIONS": {
-    "TRIGGER": "Trigger",
-    "DELETE": "Delete",
-    "VIEW": "View"
+    "TRIGGER": "Run Schedule",
+    "DELETE": "Delete Schedule",
+    "VIEW": "View Schedule",
+    "PAUSE": "Pause Schedule",
+    "UNPAUSE": "Unpause Schedule"
   },
 
   "TOOLTIPS":{

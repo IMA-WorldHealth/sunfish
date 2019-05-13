@@ -33,13 +33,17 @@
     "OVERVIEW" : "Détails",
     "SUBJECT": "Sujet",
     "SUBMIT": "Créer un horaire",
-    "TITLE" : "Les horaires"
+    "TITLE" : "Les horaires",
+    "PAUSE_SUCCESS" : "Interrompit l'horaire avec succès",
+    "UNPAUSE_SUCCESS" : "Redémarré l'horaire avec succès"
   },
 
   "ACTIONS": {
-    "TRIGGER": "Déclencher",
-    "DELETE": "Effacer",
-    "VIEW": "Voir"
+    "TRIGGER": "Exécuter l'horaire",
+    "DELETE": "Effacer l'horaire",
+    "VIEW": "Voir l'horaire",
+    "PAUSE": "Mettre en pause l'horaire",
+    "UNPAUSE": "Redémarrer l'horaire"
   },
 
   "TOOLTIPS":{
