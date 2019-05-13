@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
+const fs = require('fs');
 
 const passport = require('passport');
 const flash = require('express-flash');
@@ -29,6 +30,10 @@ app.use(session({
   saveUninitialized: true,
   secret: 'b1e9d8a4-39a4-11e9-b7e2-03fe5e35051c',
 }));
+
+app.get('/logo.svg', (req, res) => {
+  fs.createReadStream('./views/includes/logo.svg').pipe(res);
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -81,6 +86,7 @@ app.get('/', (req, res) => {
 
 // listen to events
 app.use('/events', require('./controllers/event-stream'));
+
 
 app.listen(process.env.PORT, () => console.log(`Listening on ${process.env.PORT}`));
 
