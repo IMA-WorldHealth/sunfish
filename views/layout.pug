@@ -21,7 +21,9 @@ html
     if user
       header(style="padding:0.75em").navbar
         section.navbar-section
-          a(href="/").navbar-brand.mr-2 #{app.name}
+          figure(style="background-color:inherit;").avatar.avatar-lg.navbar-brand
+            img(src="/logo.svg", alt="Sunfish", title="Sunfish Email App")
+
           a(href="/schedules").btn.btn-link #{t('SCHEDULES.TITLE')}
 
         section.navbar-section
@@ -36,3 +38,10 @@ html
         .toast.toast-error #{messages.error}
 
     block content
+
+    section(style="padding:1em;")
+      p.
+        Icons made by #[a(href="https://www.freepik.com/", title="Freepik") Freepik]
+        from #[a(href="https://www.flaticon.com/", title="Flaticon") www.flaticon.com]
+        is licensed by
+        #[a(href="http://creativecommons.org/licenses/by/3.0/", title="Creative Commons BY 3.0", target="_blank") CC 3.0 BY].

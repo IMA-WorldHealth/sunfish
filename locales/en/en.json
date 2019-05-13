@@ -3,7 +3,7 @@
     "SUBMIT": "Log In",
     "USERNAME": "Username",
     "PASSWORD": "Password",
-    "NOTE": "Note that these are the same credentials used for the ima-assp.org instance",
+    "NOTE": "Note that these are the same credentials used for the ima-assp.org instance.",
     "APP": "Login to {{app.name}}",
     "LOGOUT" : "Log Out"
   },

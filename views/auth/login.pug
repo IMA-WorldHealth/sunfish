@@ -2,9 +2,12 @@ extends ../layout.pug
 
 block content
   main.container
-    div(style="display:flex;align-items:center;justify-content:center; height:100vh")
+    div(style="display:flex;align-items:center;justify-content:center;height:calc(100vh - 100px)")
       div(style="max-width:750px")
-        h3 #{t('LOGIN.APP', { app })}
+        h3(style="margin-bottom:0;")
+          figure(style="background-color:inherit;").avatar.avatar-lg
+            img(src="/logo.svg", alt="Sunfish", title="Sunfish Email App")
+          span(style="padding-left:10px;") #{t('LOGIN.APP', { app })}
         form(name="login",method="POST",action="/auth/login", autocomplete="off")
           .form-group
             label.form-label #{t('LOGIN.USERNAME')}
