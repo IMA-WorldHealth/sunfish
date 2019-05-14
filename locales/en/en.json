@@ -35,7 +35,8 @@
     "SUBMIT": "Create a Schedule",
     "TITLE" : "Schedules",
     "PAUSE_SUCCESS" : "Paused the schedule successfully",
-    "UNPAUSE_SUCCESS" : "Schedule has been reactivated successfully"
+    "UNPAUSE_SUCCESS" : "Schedule has been reactivated successfully",
+    "IN_PROGRESS" : "Execution in progress"
   },
 
   "ACTIONS": {

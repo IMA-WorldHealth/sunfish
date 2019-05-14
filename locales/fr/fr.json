@@ -35,7 +35,8 @@
     "SUBMIT": "Créer un horaire",
     "TITLE" : "Les horaires",
     "PAUSE_SUCCESS" : "Interrompit l'horaire avec succès",
-    "UNPAUSE_SUCCESS" : "Redémarré l'horaire avec succès"
+    "UNPAUSE_SUCCESS" : "Redémarré l'horaire avec succès",
+    "IN_PROGRESS" : "Exécution en cours"
   },
 
   "ACTIONS": {

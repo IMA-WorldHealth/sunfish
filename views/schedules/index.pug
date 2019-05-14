@@ -20,16 +20,22 @@ block content
               tr
                 td #{row.subject}
                 td #{row.frequency}
-                td(title=row.lastRunTime)
-                  if row.lastRunTime
-                    i #{row.lastRunTimeLabel}
-                  else
-                    i ---
-                td(title=row.nextRunTime)
-                  if row.paused
-                    i.text-gray paused
-                  else
-                    i #{row.nextRunTimeLabel}
+
+                if row.runInProgress
+                  td(colspan=2).text-success
+                    span.loading
+                    i(style="padding-left:0.75rem") #{t('SCHEDULES.IN_PROGRESS')}
+                else
+                  td(title=row.lastRunTime)
+                    if row.lastRunTime
+                      i #{row.lastRunTimeLabel}
+                    else
+                      i ---
+                  td(title=row.nextRunTime)
+                    if row.paused
+                      i.text-gray paused
+                    else
+                      i #{row.nextRunTimeLabel}
                 td(title=row.fmtDashboards) #{row.fmtDashboards}
                 td(title=row.userGroup.id) #{row.userGroup.displayName}
                 td(title=row.created) #{row.createdLabel}
