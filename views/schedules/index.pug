@@ -47,10 +47,10 @@ block content
                     ul(style="width:200px;").menu
 
                       li.menu-item
-                        - const detailUrl = `/schedules/${row.id}/details`;
+                        - const detailUrl = `/schedules/${row.id}/update`;
                         a(href=detailUrl).text-primary
                           i.icon.icon-edit
-                          span(style="padding-left:0.6em;") #{t('ACTIONS.VIEW')}
+                          span(style="padding-left:0.6em;") #{t('ACTIONS.EDIT')}
 
                       li.menu-item
                         - const triggerUrl = `/schedules/${row.id}/trigger`;

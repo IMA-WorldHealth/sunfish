@@ -43,6 +43,7 @@
     "TRIGGER": "Run Schedule",
     "DELETE": "Delete Schedule",
     "VIEW": "View Schedule",
+    "EDIT": "Update Schedule",
     "PAUSE": "Pause Schedule",
     "UNPAUSE": "Unpause Schedule"
   },

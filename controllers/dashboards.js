@@ -5,6 +5,7 @@ const db = require('../lib/db');
 async function refreshDashboardList() {
   const dashboards = db.getCollection('dashboards');
   const { data } = await api.dashboards.list();
+
   dashboards.clear();
   dashboards.insert(data.dashboards);
 

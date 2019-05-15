@@ -86,9 +86,16 @@ router.post('/create', (req, res) => {
   }
 });
 
-router.get('/:id/details', (req, res) => {
+router.get('/:id/update', (req, res) => {
   const schedule = db.getCollection('schedules').findOne({ id: req.params.id });
-  res.render('schedules/details', { schedule });
+
+  const dashboards = db.getCollection('dashboards');
+  const userGroups = db.getCollection('userGroups');
+
+  const sortUserGroups = userGroups.chain().simplesort('displayName').data();
+  const sortedDashboards = dashboards.chain().simplesort('displayName').data();
+
+  res.render('schedules/update', { schedule, userGroups: sortUserGroups, dashboards: sortedDashboards });
 });
 
 router.get('/:id/delete', (req, res) => {
@@ -107,7 +114,7 @@ router.get('/:id/delete', (req, res) => {
 router.get('/:id/trigger', (req, res) => {
   const schedule = db.getCollection('schedules').findOne({ id: req.params.id });
   executor.runScheduledTask(schedule);
-  res.redirect('details');
+  res.redirect('/schedules');
 });
 
 
@@ -120,6 +127,53 @@ router.get('/:id/pause', (req, res) => {
 
   // queue a rescan of the fields in the database
   attendant.flush();
+});
+
+router.post('/:id/update', (req, res) => {
+  const schedules = db.getCollection('schedules');
+  const dashboards = db.getCollection('dashboards');
+  const userGroups = db.getCollection('userGroups');
+
+  // pick up the schedule from the path
+  const schedule = db.getCollection('schedules').findOne({ id: req.params.id });
+
+  // try parsing the cron syntax.
+  try {
+    cronparser.parseExpression(req.body.cron);
+  } catch (e) {
+    req.flash('error', req.t('ERRORS.CRON', { cron: req.body.cron }));
+    res.redirect(`/schedules/${req.params.id}/update`);
+    return;
+  }
+
+  try {
+    const record = {
+      updated: new Date(),
+      cron: req.body.cron,
+      body: req.body.body,
+      subject: req.body.subject,
+    };
+
+    // coerce the ids into arrays
+    const dashboardIds = [].concat(req.body['dashboard-ids']);
+
+    // add dashboards info from the database
+    record.dashboards = dashboards.where(dash => dashboardIds.includes(dash.id));
+
+    // get the full user group associated with the value
+    record.userGroup = userGroups.findOne({ id: req.body.userGroupId });
+
+    // merge changes into the original schedule
+    Object.assign(schedule, record);
+
+    schedules.update(schedule);
+
+    req.flash('success', req.t('SCHEDULES.UPDATE_SUCCESS', schedule));
+    res.redirect('/schedules');
+  } catch (e) {
+    req.flash('error', req.t('ERRORS.GENERIC', e));
+    res.redirect('/schedules/create');
+  }
 });
 
 module.exports = router;

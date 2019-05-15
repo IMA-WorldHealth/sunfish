@@ -43,6 +43,7 @@
     "TRIGGER": "Exécuter l'horaire",
     "DELETE": "Effacer l'horaire",
     "VIEW": "Voir l'horaire",
+    "EDIT": "Mettre a jour l'horaire",
     "PAUSE": "Mettre en pause l'horaire",
     "UNPAUSE": "Redémarrer l'horaire"
   },
