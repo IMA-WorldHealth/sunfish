@@ -115,7 +115,7 @@ router.get('/:id/pause', (req, res) => {
   const schedule = db.getCollection('schedules').findOne({ id: req.params.id });
   schedule.paused = !schedule.paused;
 
-  req.flash('success', schedule.paused ? req.t('SCHEDULES.UNPAUSE_SUCCESS') : req.t('SCHEDULES.PAUSE_SUCCESS'));
+  req.flash('success', schedule.paused ? req.t('SCHEDULES.PAUSE_SUCCESS') : req.t('SCHEDULES.UNPAUSE_SUCCESS'));
   res.redirect('/schedules');
 
   // queue a rescan of the fields in the database
