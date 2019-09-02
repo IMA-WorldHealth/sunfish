@@ -30,6 +30,7 @@
     "wkhtmltopdf": "^0.3.4"
   },
   "devDependencies": {
+    "ava": "^2.3.0",
     "eslint": "^6.2.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.16.0"
@@ -42,12 +43,13 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ava",
     "start": "node index.js"
   },
   "keywords": [
     "DHIS2"
   ],
   "author": "jniles",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": "git@github.com:IMA-WorldHealth/sunfish.git"
 }
