@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS schedules (
   is_running BOOLEAN DEFAULT FALSE,
   paused BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (group_id) REFERENCES groups(id)
+  FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS dashboards (
@@ -25,11 +25,19 @@ CREATE TABLE IF NOT EXISTS dashboards (
 CREATE TABLE IF NOT EXISTS schedules_dashboards (
   schedule_id INTEGER NOT NULL,
   dashboard_id TEXT NOT NULL,
-  FOREIGN KEY (schedule_id) REFERENCES schedule(id),
-  FOREIGN KEY (dashboard_id) REFERENCES dashboards(id)
+  FOREIGN KEY (schedule_id) REFERENCES schedules(id) ON DELETE CASCADE,
+  FOREIGN KEY (dashboard_id) REFERENCES dashboards(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS groups (
   id TEXT PRIMARY KEY NOT NULL,
   display_name TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS schedule_log (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  schedule_id INTEGER,
+  last_run_duration INTEGER,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (schedule_id) REFERENCES schedule(id) ON DELETE CASCADE
 );

@@ -89,4 +89,4 @@ app.use('/events', require('./controllers/event-stream'));
 
 app.listen(process.env.PORT, () => console.log(`Listening on ${process.env.PORT}`));
 
-process.on('uncaughtException', exception => console.error(exception));
+process.on('uncaughtException', (exception) => console.error(exception));

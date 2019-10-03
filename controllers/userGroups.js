@@ -2,18 +2,28 @@ const api = require('@ima-worldhealth/dhis2-api');
 const router = require('express').Router();
 const db = require('../lib/db');
 
-function refreshUserGroupList() {
-  const groups = db.getCollection('userGroups');
-  return api.userGroups.list()
-    .then(({ data }) => {
-      groups.clear();
-      groups.insert(data.userGroups);
-      return data.userGroups;
+async function refreshUserGroupList() {
+  const { data } = await api.userGroups.list();
+
+  // clear out the old dashboards
+  db.prepare('DELETE FROM groups;').run();
+
+  const insert = db.prepare('INSERT INTO groups (id, display_name) VALUES (?, ?)');
+
+  const bulk = db.transaction((groups) => {
+    groups.forEach((group) => {
+      insert.run(group.id, group.displayName);
     });
+  });
+
+  // perform a bulk insert of all user groups
+  bulk(data.userGroups);
+
+  return data.userGroups;
 }
 
 router.get('/', (req, res) => {
-  const { data } = db.getCollection('userGroups');
+  const { data } = db.prepare('SELECT * FROM groups;').all();
   res.render('data-list', { data, header: 'User Groups' });
 });
 
