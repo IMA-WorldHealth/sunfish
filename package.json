@@ -1,11 +1,11 @@
 {
   "dependencies": {
+    "@ima-worldhealth/cron-scheduler": "^1.2.1",
     "@ima-worldhealth/dhis2-api": "^0.0.6",
     "@ima-worldhealth/dhis2-crawler": "^0.0.10",
     "better-sqlite3": "^5.4.3",
     "connect-redis": "^4.0.0",
     "cron-parser": "^2.7.3",
-    "cron-scheduler": "^1.2.0",
     "dayjs": "^1.8.9",
     "debug": "^4.1.1",
     "dotenv": "^8.0.0",

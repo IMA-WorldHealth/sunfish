@@ -28,14 +28,17 @@ function configureAPI() {
 
 // make passport use the dhis2 API as an authentication agent for this app.
 passport.use(new LocalStrategy((username, password, done) => {
+  const stmt = db.prepare('INSERT INTO authentication (id, data) VALUES (?, ?);');
   // make sure the credentials are valid.
   api.auth.isValidCredentials(username, password)
-    .then((user) => {
-      const { data } = user;
-      db.getCollection('authentication').insert(data);
+    .then(({ data }) => {
+      // clear out the old authentication information (if it exists)
+      db.prepare('DELETE FROM authentication WHERE id = ?;').run(data.id);
+
+      stmt.run(data.id, JSON.stringify(data));
       done(null, data);
     })
-    .catch(() => {
+    .catch((err) => {
       done(null, false, { message: 'Bad username and password combination' });
     });
 }));
@@ -43,8 +46,8 @@ passport.use(new LocalStrategy((username, password, done) => {
 // do not do serialization (JSON.stringify/parse)
 passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser((id, done) => {
-  const user = db.getCollection('authentication').findOne({ id });
-  done(null, user);
+  const { data } = db.prepare('SELECT data FROM authentication WHERE id = ?;').get(id);
+  done(null, JSON.parse(data));
 });
 
 // TODO(@jniles) - move this to another place

@@ -9,13 +9,20 @@ const executor = require('../lib/executor');
 
 dayjs.extend(relativeTime);
 
+const queries = {
+  schedules: db.prepare('SELECT * FROM schedules ORDER BY created_at;'),
+  dashboards: db.prepare('SELECT * FROM dashboards ORDER BY display_name;'),
+  groups: db.prepare('SELECT * FROM groups ORDER BY display_name;'),
+};
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  const schedules = db.getCollection('schedules').data;
+  const schedules = queries.schedules.all();
+  const dashboards = db.prepare('SELECT * FROM dashboards');
 
   schedules.forEach((schedule) => {
-    const fmtDashboards = schedule.dashboards.map(board => board.displayName).join(', ');
+    const fmtDashboards = schedule.dashboards.map((board) => board.display_name).join(', ');
     const createdLabel = dayjs(schedule.created).fromNow();
     Object.assign(schedule, { fmtDashboards, createdLabel });
 
@@ -71,7 +78,7 @@ router.post('/create', (req, res) => {
     delete data['dashboard-ids'];
 
     // add dashboards info from the database
-    data.dashboards = dashboards.where(dash => dashboardIds.includes(dash.id));
+    data.dashboards = dashboards.where((dash) => dashboardIds.includes(dash.id));
 
     // get the full user group associated with the value
     data.userGroup = userGroups.findOne({ id: data.userGroupId });
@@ -100,7 +107,7 @@ router.get('/:id/delete', (req, res) => {
   res.redirect('/schedules');
 
   // queue a rescan of the fields in the database
-  attendant.flush();
+  attendant.refreshAllSchedules();
 });
 
 // trigger the schedule
