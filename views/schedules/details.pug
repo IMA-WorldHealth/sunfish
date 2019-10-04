@@ -27,18 +27,19 @@ block content
                     div(style="white-space: pre-wrap; padding:0.25em;") #{schedule.body}
             br
 
-            +formItem("SCHEDULES.FREQUENCY", schedule.frequency)
+            +formItem("SCHEDULES.FREQUENCY", schedule.cron)
 
-            +formItem("SCHEDULES.GROUP", schedule.userGroup.displayName)
+            +formItem("SCHEDULES.GROUP", schedule.userGroupName)
 
-            .tile.tile-centered
-              .tile-content
-                p.tile-title
-                  strong #{t('SCHEDULES.DASHBOARDS')}
-                p.title-subtitle
-                  each dashboard in schedule.dashboards
-                    span.d-block
-                      a(href="#", title=dashboard.id) #{dashboard.displayName}
+
+            // .tile.tile-centered
+            //   .tile-content
+            //     p.tile-title
+            //       strong #{t('SCHEDULES.DASHBOARDS')}
+            //     p.title-subtitle
+            //       each dashboard in schedule.dashboards
+            //         span.d-block
+            //           a(href="#", title=dashboard.id) #{dashboard.display_name}
 
       .column.col-4
         .panel
