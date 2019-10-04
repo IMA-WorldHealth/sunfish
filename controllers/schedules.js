@@ -19,7 +19,7 @@ const queries = {
     ORDER BY s.created_at;
   `),
   schedule: db.prepare(`
-    SELECT s.id, s.subject, s.cron, g.display_name as userGroupName, s.group_id AS userGroupId,
+    SELECT s.id, s.subject, s.cron, s.body, g.display_name as userGroupName, s.group_id AS userGroupId,
       GROUP_CONCAT(d.display_name) as dashboards, s.paused, s.created_at
     FROM schedules s JOIN groups g ON s.group_id = g.id
       JOIN schedules_dashboards sd ON s.id = sd.schedule_id
@@ -111,8 +111,8 @@ router.post('/create', (req, res) => {
 
 router.get('/:id/details', (req, res) => {
   const schedule = queries.schedule.get(req.params.id);
-  console.log('schedule:', schedule);
   schedule.dashboards = schedule.dashboards.split(',');
+
   res.render('schedules/details', { schedule });
 });
 
@@ -129,6 +129,9 @@ router.get('/:id/delete', (req, res) => {
 // trigger the schedule
 router.get('/:id/trigger', (req, res) => {
   const schedule = queries.schedule.get(req.params.id);
+
+  schedule.dashboards = schedule.dashboards.split(',');
+
   executor.runScheduledTask(schedule);
   res.redirect('details');
 });
@@ -136,14 +139,15 @@ router.get('/:id/trigger', (req, res) => {
 
 router.get('/:id/pause', (req, res) => {
   const schedule = queries.schedule.get(req.params.id);
-  const toggle = !schedule.paused;
-  db.prepare('UPDATE schedle SET paused = ? WHERE id = ?').run(req.params.id, toggle);
+  const toggle = Number(!schedule.paused);
+  db.prepare('UPDATE schedules SET paused = ? WHERE id = ?')
+    .run(toggle, req.params.id);
 
   req.flash('success', toggle ? req.t('SCHEDULES.PAUSE_SUCCESS') : req.t('SCHEDULES.UNPAUSE_SUCCESS'));
   res.redirect('/schedules');
 
   // queue a rescan of the fields in the database
-  attendant.flush();
+  attendant.refreshAllSchedules();
 });
 
 module.exports = router;
