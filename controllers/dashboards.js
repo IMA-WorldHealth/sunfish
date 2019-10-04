@@ -6,9 +6,9 @@ async function refreshDashboardList() {
   const { data } = await api.dashboards.list();
 
   // clear out the old dashboards
-  db.prepare('DELETE FROM dashboards;').run();
+  db.prepare('DELETE FROM dashboards WHERE id NOT IN (SELECT dashboard_id FROM schedules_dashboards);').run();
 
-  const insert = db.prepare('INSERT INTO dashboards (id, display_name) VALUES (?, ?)');
+  const insert = db.prepare('INSERT OR IGNORE INTO dashboards (id, display_name) VALUES (?, ?)');
 
   const bulk = db.transaction((boards) => {
     boards.forEach((board) => {

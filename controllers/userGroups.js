@@ -6,9 +6,9 @@ async function refreshUserGroupList() {
   const { data } = await api.userGroups.list();
 
   // clear out the old dashboards
-  db.prepare('DELETE FROM groups;').run();
+  db.prepare('DELETE FROM groups WHERE id NOT IN (SELECT group_id FROM schedules);').run();
 
-  const insert = db.prepare('INSERT INTO groups (id, display_name) VALUES (?, ?)');
+  const insert = db.prepare('INSERT OR IGNORE INTO groups (id, display_name) VALUES (?, ?)');
 
   const bulk = db.transaction((groups) => {
     groups.forEach((group) => {
