@@ -32,14 +32,14 @@ block content
             +formItem("SCHEDULES.GROUP", schedule.userGroupName)
 
 
-            // .tile.tile-centered
-            //   .tile-content
-            //     p.tile-title
-            //       strong #{t('SCHEDULES.DASHBOARDS')}
-            //     p.title-subtitle
-            //       each dashboard in schedule.dashboards
-            //         span.d-block
-            //           a(href="#", title=dashboard.id) #{dashboard.display_name}
+            .tile.tile-centered
+              .tile-content
+                p.tile-title
+                  strong #{t('SCHEDULES.DASHBOARDS')}
+                p.title-subtitle
+                  each dashboard in schedule.dashboards
+                    span.d-block
+                      a(href="#", title=dashboard) #{dashboard}
 
       .column.col-4
         .panel
