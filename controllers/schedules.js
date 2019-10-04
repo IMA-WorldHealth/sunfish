@@ -1,8 +1,7 @@
 const express = require('express');
 const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
-const shortid = require('shortid');
-const cronparser = require('cron-parser');
+const { parseExpression } = require('cron-parser');
 const db = require('../lib/db');
 const attendant = require('../lib/attendant');
 const executor = require('../lib/executor');
@@ -10,7 +9,25 @@ const executor = require('../lib/executor');
 dayjs.extend(relativeTime);
 
 const queries = {
-  schedules: db.prepare('SELECT * FROM schedules ORDER BY created_at;'),
+  schedules: db.prepare(`
+    SELECT s.id, s.subject, s.cron, g.display_name as userGroupName, s.group_id AS userGroupId,
+      GROUP_CONCAT(d.display_name) as dashboards, s.paused, s.created_at
+    FROM schedules s JOIN groups g ON s.group_id = g.id
+      JOIN schedules_dashboards sd ON s.id = sd.schedule_id
+      JOIN dashboards d ON sd.dashboard_id = d.id
+    GROUP BY s.id
+    ORDER BY s.created_at;
+  `),
+  schedule: db.prepare(`
+    SELECT s.id, s.subject, s.cron, g.display_name as userGroupName, s.group_id AS userGroupId,
+      GROUP_CONCAT(d.display_name) as dashboards, s.paused, s.created_at
+    FROM schedules s JOIN groups g ON s.group_id = g.id
+      JOIN schedules_dashboards sd ON s.id = sd.schedule_id
+      JOIN dashboards d ON sd.dashboard_id = d.id
+    WHERE s.id = ?
+    GROUP BY s.id
+    ORDER BY s.created_at;
+  `),
   dashboards: db.prepare('SELECT * FROM dashboards ORDER BY display_name;'),
   groups: db.prepare('SELECT * FROM groups ORDER BY display_name;'),
 };
@@ -19,71 +36,70 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   const schedules = queries.schedules.all();
-  const dashboards = db.prepare('SELECT * FROM dashboards');
 
   schedules.forEach((schedule) => {
-    const fmtDashboards = schedule.dashboards.map((board) => board.display_name).join(', ');
-    const createdLabel = dayjs(schedule.created).fromNow();
-    Object.assign(schedule, { fmtDashboards, createdLabel });
+    const createdLabel = dayjs(schedule.created_at).fromNow();
+    Object.assign(schedule, { createdLabel });
 
     // assign the next run time by parsing the cron
-    const parsed = cronparser.parseExpression(schedule.cron);
+    const parsed = parseExpression(schedule.cron);
     const nextRunTimeDate = parsed.next().toDate();
     const nextRunTimeLabel = dayjs(nextRunTimeDate).fromNow();
-    Object.assign(schedule, { nextRunTimeLabel, nextRunTime: nextRunTimeDate });
 
-    // add in last runtime if exists
-    if (schedule.lastRunTime) {
-      const lastRunTimeLabel = dayjs(schedule.lastRunTime).fromNow();
-      Object.assign(schedule, { lastRunTimeLabel });
-    }
+    const parsed2 = parseExpression(schedule.cron);
+    const prevRunTimeDate = parsed2.prev().toDate();
+    const prevRunTimeLabel = dayjs(prevRunTimeDate).fromNow();
+
+    Object.assign(schedule, { nextRunTimeLabel, nextRunTime: nextRunTimeDate });
+    Object.assign(schedule, { prevRunTimeLabel, prevRunTime: prevRunTimeDate });
   });
 
   res.render('schedules', { schedules });
 });
 
 router.get('/create', (req, res) => {
-  const dashboards = db.getCollection('dashboards');
-  const userGroups = db.getCollection('userGroups');
+  const dashboards = queries.dashboards.all();
+  const userGroups = queries.groups.all();
 
-  const sortUserGroups = userGroups.chain().simplesort('displayName').data();
-  const sortedDashboards = dashboards.chain().simplesort('displayName').data();
-
-  res.render('schedules/create', { userGroups: sortUserGroups, dashboards: sortedDashboards });
+  res.render('schedules/create', { userGroups, dashboards });
 });
 
 router.post('/create', (req, res) => {
-  const schedules = db.getCollection('schedules');
-  const dashboards = db.getCollection('dashboards');
-  const userGroups = db.getCollection('userGroups');
-
   // try parsing the cron syntax.
   try {
-    cronparser.parseExpression(req.body.cron);
+    parseExpression(req.body.cron);
   } catch (e) {
     req.flash('error', req.t('ERRORS.CRON', { cron: req.body.cron }));
     res.redirect('/schedules/create');
     return;
   }
 
+
   try {
     // gather principle data
     const data = req.body;
-    data.id = shortid();
     data.user_id = req.user.id;
-    data.created = new Date();
 
     // coerce the ids into arrays
     const dashboardIds = [].concat(data['dashboard-ids']);
     delete data['dashboard-ids'];
 
-    // add dashboards info from the database
-    data.dashboards = dashboards.where((dash) => dashboardIds.includes(dash.id));
+    const createScheduleStatement = db.prepare(`INSERT INTO schedules
+      (subject, body, group_id, cron, is_running, paused)
+      VALUES (@subject, @body, @group_id, @cron, FALSE, FALSE);
+    `);
 
-    // get the full user group associated with the value
-    data.userGroup = userGroups.findOne({ id: data.userGroupId });
+    const linkDashboardStatement = db.prepare('INSERT INTO schedules_dashboards (schedule_id, dashboard_id) VALUES (?, ?);');
 
-    schedules.insert(data);
+    const txn = db.transaction(() => {
+      const { lastInsertRowid } = createScheduleStatement.run(data);
+
+      dashboardIds.forEach((dashboardId) => {
+        linkDashboardStatement.run(lastInsertRowid, dashboardId);
+      });
+    });
+
+    txn();
 
     req.flash('success', req.t('SCHEDULES.CREATE_SUCCESS', data));
     res.redirect('/schedules');
@@ -94,14 +110,14 @@ router.post('/create', (req, res) => {
 });
 
 router.get('/:id/details', (req, res) => {
-  const schedule = db.getCollection('schedules').findOne({ id: req.params.id });
+  const schedule = queries.schedule.get(req.params.id);
+  console.log('schedule:', schedule);
+  schedule.dashboards = schedule.dashboards.split(',');
   res.render('schedules/details', { schedule });
 });
 
 router.get('/:id/delete', (req, res) => {
-  const schedules = db.getCollection('schedules');
-
-  schedules.findAndRemove({ id: req.params.id });
+  db.prepare('DELETE FROM schedules WHERE id = ?').run(req.params.id);
 
   req.flash('success', req.t('SCHEDULES.DELETE_SUCCESS'));
   res.redirect('/schedules');
@@ -112,17 +128,18 @@ router.get('/:id/delete', (req, res) => {
 
 // trigger the schedule
 router.get('/:id/trigger', (req, res) => {
-  const schedule = db.getCollection('schedules').findOne({ id: req.params.id });
+  const schedule = queries.schedule.get(req.params.id);
   executor.runScheduledTask(schedule);
   res.redirect('details');
 });
 
 
 router.get('/:id/pause', (req, res) => {
-  const schedule = db.getCollection('schedules').findOne({ id: req.params.id });
-  schedule.paused = !schedule.paused;
+  const schedule = queries.schedule.get(req.params.id);
+  const toggle = !schedule.paused;
+  db.prepare('UPDATE schedle SET paused = ? WHERE id = ?').run(req.params.id, toggle);
 
-  req.flash('success', schedule.paused ? req.t('SCHEDULES.PAUSE_SUCCESS') : req.t('SCHEDULES.UNPAUSE_SUCCESS'));
+  req.flash('success', toggle ? req.t('SCHEDULES.PAUSE_SUCCESS') : req.t('SCHEDULES.UNPAUSE_SUCCESS'));
   res.redirect('/schedules');
 
   // queue a rescan of the fields in the database

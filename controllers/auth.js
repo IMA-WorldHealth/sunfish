@@ -46,8 +46,12 @@ passport.use(new LocalStrategy((username, password, done) => {
 // do not do serialization (JSON.stringify/parse)
 passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser((id, done) => {
-  const { data } = db.prepare('SELECT data FROM authentication WHERE id = ?;').get(id);
-  done(null, JSON.parse(data));
+  try {
+    const { data } = db.prepare('SELECT data FROM authentication WHERE id = ?;').get(id);
+    done(null, JSON.parse(data));
+  } catch (e) {
+    done(null, false, { message: 'Please log in again.' });
+  }
 });
 
 // TODO(@jniles) - move this to another place

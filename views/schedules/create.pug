@@ -19,16 +19,16 @@ block content
 
           .form-group
             label.form-label #{t('SCHEDULES.GROUP')}
-            select(name="userGroupId", required).form-select
+            select(name="group_id", required).form-select
               option(disabled, selected) #{t('SCHEDULES.GROUP_SELECT')}
               each group in userGroups
-                option(value=group.id).text-capitalize #{group.displayName}
+                option(value=group.id).text-capitalize #{group.display_name}
 
           .form-group
             label.form-label #{t('SCHEDULES.DASHBOARDS')}
             select(name="dashboard-ids", size=8, required, multiple).form-select
               each dashboard in dashboards
-                option(value=dashboard.id).text-capitalize #{dashboard.displayName}
+                option(value=dashboard.id).text-capitalize #{dashboard.display_name}
 
           .form-group#frequency
             label.form-label #{t('SCHEDULES.FREQUENCY')}

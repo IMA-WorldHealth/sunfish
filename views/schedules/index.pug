@@ -19,10 +19,10 @@ block content
             each row in schedules
               tr
                 td #{row.subject}
-                td #{row.frequency}
-                td(title=row.lastRunTime)
-                  if row.lastRunTime
-                    i #{row.lastRunTimeLabel}
+                td #{row.cron}
+                td(title=row.prevRunTime)
+                  if row.prevRunTime
+                    i #{row.prevRunTimeLabel}
                   else
                     i ---
                 td(title=row.nextRunTime)
@@ -30,8 +30,8 @@ block content
                     i.text-gray paused
                   else
                     i #{row.nextRunTimeLabel}
-                td(title=row.fmtDashboards) #{row.fmtDashboards}
-                td(title=row.userGroup.id) #{row.userGroup.displayName}
+                td(title=row.dashboards) #{row.dashboards}
+                td(title=row.userGroupId) #{row.userGroupName}
                 td(title=row.created) #{row.createdLabel}
                 td
                   .dropdown.dropdown-right
