@@ -310,9 +310,9 @@
     shortid "^2.2.14"
 
 "@ima-worldhealth/dhis2-crawler@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@ima-worldhealth/dhis2-crawler/-/dhis2-crawler-0.1.0.tgz#ee2a5c110c31f1f26e36557e77c6de37a24044ce"
-  integrity sha512-hiY88rQkeQOzhP1bAgwN13Lj3QGa9VcG1OAv9K/7HqA1zwP6xYD2EUFHDYEVlry3guREbocodtPj9QkLGCyTpg==
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/dhis2-crawler/-/dhis2-crawler-0.1.1.tgz#6d50fcd266e8b73b848434f1128295df95e26def"
+  integrity sha512-AE7UjMHzVqJ2iY0COXchlo3c6kHoibR9IjOPkss3MzduRoaCU8sYKF5mpNS/wjGQ3feGbfvg5Nw7dXqohuGx9A==
   dependencies:
     debug "^4.1.1"
     delay "^4.1.0"
