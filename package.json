@@ -33,10 +33,11 @@
     "ava": "^2.3.0",
     "eslint": "^6.2.1",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.16.0"
+    "eslint-plugin-import": "^2.16.0",
+    "release-it": "^12.4.3"
   },
   "name": "sunfish",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A webapp for configuring DHIS2 email reports",
   "main": "index.js",
   "directories": {
@@ -44,7 +45,8 @@
   },
   "scripts": {
     "test": "ava",
-    "start": "node index.js"
+    "start": "node index.js",
+    "release": "release-it --disable-metrics"
   },
   "keywords": [
     "DHIS2"
