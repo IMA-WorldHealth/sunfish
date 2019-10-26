@@ -8,6 +8,16 @@
     "LOGOUT" : "Se déconnecter"
   },
 
+  "INSTALL" : {
+    "SUBMIT" : "Configure {{app.name}}",
+    "INSTRUCTIONS" : "It looks like you are installing {{app.name}} for the first time.  Please configure the following variables to tell {{app.name}} how to interact with DHIS2.",
+    "DHIS2_URL" : "DHIS2 Web API URL",
+    "USERNAME" : "DHIS2 Username",
+    "USERNAME" : "DHIS2 Password",
+    "SUBMIT" : "Register the Configuration",
+  },
+
+
   "ERRORS": {
     "CRON": "Erreur! Impossible d'analyser le calendrier. La syntaxe cron \"{{cron}}}\" n'est pas valide.",
     "GENERIC": "Oups! Une erreur s'est produite avec le code {{code}}."
