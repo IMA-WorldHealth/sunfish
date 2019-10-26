@@ -3,9 +3,17 @@
     "SUBMIT": "Log In",
     "USERNAME": "Username",
     "PASSWORD": "Password",
-    "NOTE": "Note that these are the same credentials used for the ima-assp.org instance.",
     "APP": "Login to {{app.name}}",
     "LOGOUT" : "Log Out"
+  },
+
+  "INSTALL" : {
+    "SUBMIT" : "Configure {{app.name}}",
+    "INSTRUCTIONS" : "It looks like you are installing {{app.name}} for the first time.  Please configure the following variables to tell {{app.name}} how to interact with DHIS2.",
+    "DHIS2_URL" : "DHIS2 Web API URL",
+    "USERNAME" : "DHIS2 Username",
+    "USERNAME" : "DHIS2 Password",
+    "SUBMIT" : "Register the Configuration",
   },
 
   "ERRORS": {

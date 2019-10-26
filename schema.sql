@@ -1,3 +1,8 @@
+CREATE TABLE IF NOT EXISTS credentials (
+  server TEXT NOT NULL,
+  username TEXT NOT NULL,
+  password TEXT NOT NULL
+);
 
 CREATE TABLE IF NOT EXISTS authentication (
   id TEXT PRIMARY KEY NOT NULL,
