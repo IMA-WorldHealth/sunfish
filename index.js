@@ -14,8 +14,6 @@ const i18nextBackend = require('i18next-node-fs-backend');
 const i18nextMiddleware = require('i18next-express-middleware');
 const path = require('path');
 
-const healthcheck = require('./lib/healthcheck');
-
 const app = express();
 const client = new Redis();
 
@@ -64,17 +62,6 @@ app.use((req, res, next) => {
   };
 
   next();
-});
-
-app.use('/setup', require('./controllers/setup'));
-
-// redirect to setup page if the application is not installed
-app.use((req, res, next) => {
-  if (!healthcheck.isInstalled()) {
-    res.redirect('/setup');
-  } else {
-    next();
-  }
 });
 
 app.use('/auth', require('./controllers/auth'));
