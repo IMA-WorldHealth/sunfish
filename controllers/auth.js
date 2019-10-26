@@ -2,6 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const api = require('@ima-worldhealth/dhis2-api');
 const express = require('express');
+const debug = require('debug')('sunfish:auth');
 
 const router = express.Router();
 
@@ -11,9 +12,19 @@ const dashboards = require('../controllers/dashboards');
 const userGroups = require('../controllers/userGroups');
 
 function configureAPI() {
-  const server = process.env.SERVER;
-  const username = process.env.SU_USER;
-  const password = process.env.SU_PASSWORD;
+  const credentials = db.prepare('SELECT * FROM credentials LIMIT 1;').get();
+
+  if (!credentials) {
+    return;
+  }
+
+  const { server, username, password } = credentials;
+
+  debug(`Using DHIS2 server: ${server}`);
+  debug(`Using DHIS2 user: ${username}`);
+
+  const mask = password.replace(/./g, '*');
+  debug(`Using DHIS2 password: ${mask}`);
 
   // configure the dhis2API
   api.configure({ url: server, auth: { username, password } });
@@ -38,7 +49,7 @@ passport.use(new LocalStrategy((username, password, done) => {
       stmt.run(data.id, JSON.stringify(data));
       done(null, data);
     })
-    .catch((err) => {
+    .catch(() => {
       done(null, false, { message: 'Bad username and password combination' });
     });
 }));
