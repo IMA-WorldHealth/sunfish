@@ -21,7 +21,7 @@ function removeClassIfExists(element, klassName) {
     // eslint-disable-next-line
     element.className = klasses
       .split(' ')
-      .filter(klass => klass !== klassName)
+      .filter((klass) => klass !== klassName)
       .join(' ');
   }
 }
@@ -85,7 +85,7 @@ form.addEventListener('submit', () => {
   let crontab;
   switch (frequencySelect.value) {
     case 'daily':
-      crontab = `0 ${hourValue} * * *`;
+      crontab = `*/5 ${hourValue} * * *`;
       break;
     case 'weekly':
       crontab = `0 ${hourValue} * * ${weekValue}`;
