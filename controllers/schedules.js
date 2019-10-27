@@ -74,7 +74,6 @@ router.post('/create', (req, res) => {
     return;
   }
 
-
   try {
     // gather principle data
     const data = req.body;
@@ -100,6 +99,8 @@ router.post('/create', (req, res) => {
     });
 
     txn();
+
+    attendant.refreshAllSchedules();
 
     req.flash('success', req.t('SCHEDULES.CREATE_SUCCESS', data));
     res.redirect('/schedules');
