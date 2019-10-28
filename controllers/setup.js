@@ -3,6 +3,9 @@ const api = require('@ima-worldhealth/dhis2-api');
 const debug = require('debug')('sunfish:setup');
 const db = require('../lib/db');
 
+const dashboards = require('./dashboards');
+const userGroups = require('./userGroups');
+
 /**
  * @function setup
  * @method GET
@@ -42,6 +45,12 @@ router.post('/', async (req, res) => {
       .run(username, password, server);
 
     debug('Credentials saved.');
+
+    setTimeout(() => {
+      // refresh data values
+      dashboards.refreshDashboardList();
+      userGroups.refreshUserGroupList();
+    }, 200);
 
     req.flash('info', req.t('INSTALL.SUCCESS', { server, username }));
     res.redirect('/');
