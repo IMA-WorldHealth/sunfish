@@ -11,10 +11,10 @@ block content
         form(name="login",method="POST",action="/auth/login", autocomplete="off")
           .form-group
             label.form-label #{t('LOGIN.USERNAME')}
-            input(type="text",name="username", autocomplete="off")
+            input(type="text",name="username", autocomplete="off").form-input
           .form-group
             label.form-label #{t('LOGIN.PASSWORD')}
-            input(type="password",name="password")
+            input(type="password",name="password").form-input
 
           button(type="submit", data-add-loading).btn.btn-primary
             span #{t('LOGIN.SUBMIT')}
