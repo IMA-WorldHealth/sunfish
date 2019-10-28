@@ -33,7 +33,7 @@ function configureAPI() {
     // refresh data values
     dashboards.refreshDashboardList();
     userGroups.refreshUserGroupList();
-  }, 1000);
+  }, 250);
 }
 
 
