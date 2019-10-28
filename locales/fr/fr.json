@@ -14,7 +14,7 @@
     "DHIS2_URL" : "DHIS2 Web API URL",
     "USERNAME" : "DHIS2 Username",
     "USERNAME" : "DHIS2 Password",
-    "SUBMIT" : "Register the Configuration",
+    "SUBMIT" : "Register the Configuration"
   },
 
 
