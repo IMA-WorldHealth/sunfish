@@ -8,12 +8,13 @@
   },
 
   "INSTALL" : {
-    "SUBMIT" : "Configure {{app.name}}",
-    "INSTRUCTIONS" : "It looks like you are installing {{app.name}} for the first time.  Please configure the following variables to tell {{app.name}} how to interact with DHIS2.",
-    "DHIS2_URL" : "DHIS2 Web API URL",
-    "USERNAME" : "DHIS2 Username",
-    "USERNAME" : "DHIS2 Password",
-    "SUBMIT" : "Register the Configuration"
+    "APP" : "First Run Setup",
+    "INSTRUCTIONS" : "It looks like you are installing {{app.name}} for the first time!  Please configure the credentials for the {{app.name}} to interact with DHIS2.  Provide the DHIS2 web API URL and enter the username and password for an account on DHIS2. You will only be required to do this once.",
+    "DHIS2_URL" : "Web API URL",
+    "USERNAME" : "Username",
+    "PASSWORD" : "Password",
+    "SUBMIT" : "Test & Save Settings",
+    "ERROR" : "An error occured during registration.  Please check that the username/password combination are correct for the API route."
   },
 
   "ERRORS": {
