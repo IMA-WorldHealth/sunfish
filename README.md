@@ -1,6 +1,8 @@
 Sunfish
 -------
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/IMA-WorldHealth/sunfish.svg)](https://greenkeeper.io/)
+
 Sunfish is an application to turn DHIS2 dashboards into PDFs and mail them to members of user groups
 on a set schedule.  It uses DHIS2 for authentication, meaning that if you have an account with DHIS2,
 you will automatically have an account on Sunfish and can log in to view the schedules.
