@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@ima-worldhealth/coral": "^1.0.0",
     "@ima-worldhealth/cron-scheduler": "^1.2.1",
     "@ima-worldhealth/dhis2-api": "^0.0.6",
     "@ima-worldhealth/dhis2-crawler": "^0.1.0",
@@ -25,9 +26,7 @@
     "pug": "^2.0.3",
     "shortid": "^2.2.14",
     "spectre.css": "^0.5.8",
-    "stream-to-promise": "^2.2.0",
-    "tempy": "^0.3.0",
-    "wkhtmltopdf": "^0.3.4"
+    "tempy": "^0.3.0"
   },
   "devDependencies": {
     "ava": "^2.3.0",
