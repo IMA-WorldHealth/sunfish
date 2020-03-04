@@ -3,7 +3,7 @@
     "@ima-worldhealth/coral": "^1.4.0",
     "@ima-worldhealth/cron-scheduler": "^1.2.1",
     "@ima-worldhealth/dhis2-api": "^0.0.6",
-    "@ima-worldhealth/dhis2-crawler": "^0.1.0",
+    "@ima-worldhealth/dhis2-crawler": "^0.2.0",
     "better-sqlite3": "^6.0.1",
     "connect-redis": "^4.0.0",
     "cron-parser": "^2.7.3",
@@ -36,7 +36,7 @@
     "release-it": "^12.4.3"
   },
   "name": "@ima-worldhealth/sunfish",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A webapp for configuring DHIS2 email reports",
   "main": "index.js",
   "directories": {
