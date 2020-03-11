@@ -74,9 +74,9 @@
     shortid "^2.2.14"
 
 "@ima-worldhealth/dhis2-crawler@^0.2.0":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@ima-worldhealth/dhis2-crawler/-/dhis2-crawler-0.2.2.tgz#5b40e438330c94a8753759d2dde5694212588103"
-  integrity sha512-eSA+ImEXLH3MPb0lWV6gbDr6LHukezrobcUZeCj5O6eNSc58Dh2XB+5wEDuN0P5TELnhhq9Xtfw3nwI6c6NJGQ==
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/dhis2-crawler/-/dhis2-crawler-0.2.4.tgz#5c8f40d4eace064475c8f77e6abf6db4aa008818"
+  integrity sha512-gFKXu31GpIPH3Jb9Nq/Cgtyl/gFeZHmIZEORFUY6aQM38DNRW1a8FObVnJEHrOEmfeYASWwjve0u1thn5a65mw==
   dependencies:
     debug "^4.1.1"
     delay "^4.1.0"
