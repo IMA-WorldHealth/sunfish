@@ -18,14 +18,7 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@babel/runtime@^7.3.1":
-  version "7.8.4"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.4.tgz#d79f5a2040f7caa24d53e563aad49cbc05581308"
-  integrity sha512-neAp3zt80trRVBI1x0azq6c57aNBqYZH8KhMm3TaB7wEI5Q4A2SHfBHE8w9gOhI/lrqxtEbXZgQIrHP+wvSGwQ==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
-"@babel/runtime@^7.8.7":
+"@babel/runtime@^7.3.1", "@babel/runtime@^7.8.7":
   version "7.8.7"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.7.tgz#8fefce9802db54881ba59f90bb28719b4996324d"
   integrity sha512-+AATMUFppJDw6aiR5NVPHqIQBlV/Pj8wY/EZH+lmvRdUo9xBaz/rF3alAwFJQavvKfeOlPE7oaaDHVbcySbCsg==
@@ -2571,9 +2564,9 @@ i18next-node-fs-backend@^2.1.1:
     json5 "2.0.0"
 
 i18next@^19.0.1:
-  version "19.3.2"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.3.2.tgz#a17c3c8bb0dd2d8c4a8963429df99730275b3282"
-  integrity sha512-QDBQ8MqFWi4+L9OQjjZEKVyg9uSTy3NTU3Ri53QHe7nxtV+KD4PyLB8Kxu58gr6b9y5l8cU3mCiNHVeoxPMzAQ==
+  version "19.3.3"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.3.3.tgz#04bd79b315e5fe2c87ab8f411e5d55eda0a17bd8"
+  integrity sha512-CnuPqep5/JsltkGvQqzYN4d79eCe0TreCBRF3a8qHHi8x4SON1qqZ/pvR2X7BfNkNqpA5HXIqw0E731H+VsgSg==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
@@ -4422,11 +4415,6 @@ regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
-
-regenerator-runtime@^0.13.2:
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz#7cf6a77d8f5c6f60eb73c5fc1955b2ceb01e6bf5"
-  integrity sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
 
 regenerator-runtime@^0.13.4:
   version "0.13.4"
