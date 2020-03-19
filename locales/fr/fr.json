@@ -38,15 +38,16 @@
     "FREQUENCY_SELECT": "Sélectionnez une fréquence",
     "GROUP": "Groupe d'utilisateurs",
     "GROUP_SELECT": "Choisissez un groupe d'utilisateurs",
+    "INCLUDE_GRAPHS" : "Inclure des graphiques dans le rapport PDF",
     "LAST_RUN": "Dernière exécution",
     "LOG" : "Registre",
-    "REFRESH" : "Actualiser les sources de données",
     "NEXT_RUN": "Prochaine exécution",
     "OVERVIEW" : "Détails",
+    "PAUSE_SUCCESS" : "Interrompit l'horaire avec succès",
+    "REFRESH" : "Actualiser les sources de données",
     "SUBJECT": "Sujet",
     "SUBMIT": "Créer un horaire",
     "TITLE" : "Les horaires",
-    "PAUSE_SUCCESS" : "Interrompit l'horaire avec succès",
     "UNPAUSE_SUCCESS" : "Redémarré l'horaire avec succès"
   },
 
@@ -81,5 +82,10 @@
     "PICK_DAY_OF_MONTH": "Choisissez le jour du mois",
     "PICK_DAY_OF_WEEK": "Choisissez le jour de la semaine",
     "PICK_HOUR": "Choisissez l'heure du jour"
+  },
+
+  "OPTIONS" : {
+    "YES" : "Oui",
+    "NO" : "Non"
   }
 }

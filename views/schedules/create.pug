@@ -30,6 +30,19 @@ block content
               each dashboard in dashboards
                 option(value=dashboard.id).text-capitalize #{dashboard.display_name}
 
+          .form-group
+            label.form-label #{t('SCHEDULES.INCLUDE_GRAPHS')}
+
+            label(for="yes" style="cursor:pointer;").form-radio
+              input(type="radio" id="yes" name="include_graphs" value="1")
+              i.form-icon
+              span #{t('OPTIONS.YES')}
+
+            label(for="no" style="cursor:pointer;").form-radio
+              input(type="radio" id="no" name="include_graphs" style="" checked value="0")
+              i.form-icon
+              span #{t('OPTIONS.NO')}
+
           .form-group#frequency
             label.form-label #{t('SCHEDULES.FREQUENCY')}
             select(name="frequency", required).form-select.text-capitalize

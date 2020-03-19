@@ -34,17 +34,18 @@
     "EMPTY_TITLE": "There are no schedules registered",
     "FREQUENCY": "Frequency",
     "FREQUENCY_SELECT": "Select a Frequency",
-    "GROUP": "User Group",
     "GROUP_SELECT": "Choose a User Group",
+    "GROUP": "User Group",
+    "INCLUDE_GRAPHS" : "Include graphs in PDF output",
     "LAST_RUN": "Last Run",
     "LOG" : "Schedule Log",
-    "REFRESH" : "Refresh Data Sources",
     "NEXT_RUN": "Next Run",
     "OVERVIEW" : "Overview",
+    "PAUSE_SUCCESS" : "Paused the schedule successfully",
+    "REFRESH" : "Refresh Data Sources",
     "SUBJECT": "Email Subject",
     "SUBMIT": "Create a Schedule",
     "TITLE" : "Schedules",
-    "PAUSE_SUCCESS" : "Paused the schedule successfully",
     "UNPAUSE_SUCCESS" : "Schedule has been reactivated successfully"
   },
 
@@ -79,5 +80,10 @@
     "PICK_DAY_OF_MONTH": "Pick the Day of the Month",
     "PICK_DAY_OF_WEEK": "Pick the Day of the Week",
     "PICK_HOUR": "Pick the Hour of the Day"
+  },
+
+  "OPTIONS" : {
+    "YES" : "Yes",
+    "NO" : "No"
   }
 }

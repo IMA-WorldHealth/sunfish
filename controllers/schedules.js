@@ -15,6 +15,7 @@ dayjs.extend(relativeTime);
 const queries = {
   schedules: db.prepare(`
     SELECT s.id, s.subject, s.cron, g.display_name as userGroupName, s.group_id AS userGroupId,
+      s.include_graphs,
       GROUP_CONCAT(d.display_name) as dashboards, s.paused, s.created_at
     FROM schedules s JOIN groups g ON s.group_id = g.id
       JOIN schedules_dashboards sd ON s.id = sd.schedule_id
@@ -24,6 +25,7 @@ const queries = {
   `),
   schedule: db.prepare(`
     SELECT s.id, s.subject, s.cron, s.body, g.display_name as userGroupName, s.group_id AS userGroupId,
+      s.include_graphs,
       GROUP_CONCAT(d.display_name) as dashboards, s.paused, s.created_at
     FROM schedules s JOIN groups g ON s.group_id = g.id
       JOIN schedules_dashboards sd ON s.id = sd.schedule_id
@@ -100,9 +102,11 @@ router.post('/create', (req, res) => {
     const dashboardIds = [].concat(data['dashboard-ids']);
     delete data['dashboard-ids'];
 
+    data.include_graphs = parseInt(data.include_graphs, 10);
+
     const createScheduleStatement = db.prepare(`INSERT INTO schedules
-      (subject, body, group_id, cron, is_running, paused)
-      VALUES (@subject, @body, @group_id, @cron, FALSE, FALSE);
+      (subject, body, group_id, cron, is_running, paused, include_graphs)
+      VALUES (@subject, @body, @group_id, @cron, FALSE, FALSE, @include_graphs);
     `);
 
     const linkDashboardStatement = db.prepare('INSERT INTO schedules_dashboards (schedule_id, dashboard_id) VALUES (?, ?);');
