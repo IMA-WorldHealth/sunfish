@@ -1,10 +1,14 @@
 const express = require('express');
 const dayjs = require('dayjs');
+const debug = require('debug')('sunfish:schedules');
 const relativeTime = require('dayjs/plugin/relativeTime');
 const { parseExpression } = require('cron-parser');
 const db = require('../lib/db');
 const attendant = require('../lib/attendant');
 const executor = require('../lib/executor');
+
+const { refreshDashboardList } = require('./dashboards');
+const { refreshUserGroupList } = require('./userGroups');
 
 dayjs.extend(relativeTime);
 
@@ -62,6 +66,19 @@ router.get('/create', (req, res) => {
   const userGroups = queries.groups.all();
 
   res.render('schedules/create', { userGroups, dashboards });
+});
+
+router.get('/refresh', async (req, res) => {
+  debug('Refreshing dashboards and user groups...');
+
+  await Promise.all([
+    refreshDashboardList(),
+    refreshUserGroupList(),
+  ]);
+
+  debug('Dashboards and user groups refreshed.');
+
+  res.redirect('back');
 });
 
 router.post('/create', (req, res) => {
