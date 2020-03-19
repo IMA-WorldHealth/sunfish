@@ -38,6 +38,7 @@
     "GROUP_SELECT": "Choose a User Group",
     "LAST_RUN": "Last Run",
     "LOG" : "Schedule Log",
+    "REFRESH" : "Refresh Data Sources",
     "NEXT_RUN": "Next Run",
     "OVERVIEW" : "Overview",
     "SUBJECT": "Email Subject",
