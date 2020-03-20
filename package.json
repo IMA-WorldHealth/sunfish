@@ -42,6 +42,9 @@
   "directories": {
     "lib": "lib"
   },
+  "publishConfig" : {
+    "access" : "public"
+  },
   "scripts": {
     "test": "ava",
     "start": "node index.js",
