@@ -38,9 +38,9 @@
   integrity sha512-FmuxfCuolpLl0AnQ2NHSzoUKWEJDFl63qXjzdoWBVyFCXzMGm1spBzk7LeHNoVCiWCF7mRVms9e6jEV9+MoPbg==
 
 "@ima-worldhealth/coral@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@ima-worldhealth/coral/-/coral-1.4.0.tgz#4a6c4df782a59eff67c5b2c91309403c549cce4d"
-  integrity sha512-7dAzlTcUZkfbeg0WNChvNuN/WpFx7xFjd4U3GRXpyu9vULHOmTknSHRHhOKr/jy6oJ3X92Su78IwxeB0d3q5hw==
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/coral/-/coral-1.4.1.tgz#c240ba608c68bd2b4f0f5e442c40bdc5c6994df3"
+  integrity sha512-5vcarKa8/pxERvq9z/SKLdJW2eqM2Z3+08X497tY7/3KE8BJoEbkTpkjoCngh7kdgZTnvZAWxWOnTePXai5OmA==
   dependencies:
     inline-source "7.2.0"
     puppeteer "2.1.1"
