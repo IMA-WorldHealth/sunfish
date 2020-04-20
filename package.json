@@ -16,7 +16,7 @@
     "handlebars": "^4.1.0",
     "helmet": "^3.15.1",
     "i18next": "^19.0.1",
-    "i18next-express-middleware": "^1.7.1",
+    "i18next-express-middleware": "^2.0.0",
     "i18next-node-fs-backend": "^2.1.1",
     "ioredis": "^4.14.0",
     "mailgun-js": "^0.22.0",
