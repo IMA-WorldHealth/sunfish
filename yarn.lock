@@ -53,15 +53,15 @@
     puppeteer "2.1.1"
 
 "@ima-worldhealth/cron-scheduler@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@ima-worldhealth/cron-scheduler/-/cron-scheduler-1.2.1.tgz#923fe14c4b56888d7353bfc9176c59f007fc11ad"
-  integrity sha512-lKPIU4rT/y4urLc7w6TsUOk3eBlmURrUYqF6iAkUXD3I/jwPDFeJz9LHsG4DtWCif7mfRyQRq/hbPnM1JNRPag==
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/cron-scheduler/-/cron-scheduler-1.3.0.tgz#978555a0f169bcd93bb4b6217e0ec84b1cdd65ff"
+  integrity sha512-QaKNvfuAtl4n7NYzgg7xFfuHM+W0hu+pFumwWOHifUj5SqnPMTTmgnx1AHKXs+Y5djJr/FoFHhUYhRzc3Xp0pQ==
   dependencies:
     any-promise "^1.3.0"
-    cron-converter "^0.0.12"
+    cron-converter "^1.0.0"
     long-timeout "^0.1.1"
     moment-timezone "^0.5.26"
-    pretty-ms "^2.1.0"
+    pretty-ms "^6.0.1"
 
 "@ima-worldhealth/dhis2-api@^0.0.6":
   version "0.0.6"
@@ -1226,10 +1226,10 @@ cosmiconfig@6.0.0:
     path-type "^4.0.0"
     yaml "^1.7.2"
 
-cron-converter@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/cron-converter/-/cron-converter-0.0.12.tgz#63b44e0dc400a1d721d6ea4bb22e866c7699834c"
-  integrity sha512-JXVOF2i5AyoNoXiDpAMwSezdfP6ycQmClpQjbDEqhlVZNNFTXzd7tgn9Tl2wRm8131lYY+zcvk1yBoMj0eExlQ==
+cron-converter@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/cron-converter/-/cron-converter-1.0.0.tgz#83140dea518e24df479cb30b162bf367b5cf92ee"
+  integrity sha512-org2ua/GhK5YdXxAyg0dP5Mt9ehCYAxxt+arIPpXY6mW74FRzL23GKcJ7GRXbD377d3M3XCitEfcqMu1E1joqg==
   dependencies:
     moment-timezone "~0.5"
     sprintf-js "~1"
@@ -2857,11 +2857,6 @@ is-extglob@^2.1.1:
   resolved "https://registry.yarnpkg.com/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
   integrity sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=
 
-is-finite@^1.0.1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/is-finite/-/is-finite-1.1.0.tgz#904135c77fb42c0641d6aa1bcdbc4daa8da082f3"
-  integrity sha512-cdyMtqX/BOqqNBBiKlIVkytNHm49MtMlYyn1zxzvJKWmFMlGzm+ry5BBfYyeY9YmNKbRSo/o7OX9w9ale0wg3w==
-
 is-fullwidth-code-point@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-1.0.0.tgz#ef9e31386f031a7f0d643af82fde50c457ef00cb"
@@ -3878,11 +3873,6 @@ parse-json@^4.0.0:
     error-ex "^1.3.1"
     json-parse-better-errors "^1.0.1"
 
-parse-ms@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/parse-ms/-/parse-ms-1.0.1.tgz#56346d4749d78f23430ca0c713850aef91aa361d"
-  integrity sha1-VjRtR0nXjyNDDKDHE4UK75GqNh0=
-
 parse-ms@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/parse-ms/-/parse-ms-2.1.0.tgz#348565a753d4391fa524029956b172cb7753097d"
@@ -4032,11 +4022,6 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-plur@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/plur/-/plur-1.0.0.tgz#db85c6814f5e5e5a3b49efc28d604fec62975156"
-  integrity sha1-24XGgU9eXlo7Se/CjWBP7GKXUVY=
-
 plur@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/plur/-/plur-4.0.0.tgz#729aedb08f452645fe8c58ef115bf16b0a73ef84"
@@ -4074,15 +4059,6 @@ prepend-http@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
-
-pretty-ms@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/pretty-ms/-/pretty-ms-2.1.0.tgz#4257c256df3fb0b451d6affaab021884126981dc"
-  integrity sha1-QlfCVt8/sLRR1q/6qwIYhBJpgdw=
-  dependencies:
-    is-finite "^1.0.1"
-    parse-ms "^1.0.0"
-    plur "^1.0.0"
 
 pretty-ms@^6.0.1:
   version "6.0.1"
