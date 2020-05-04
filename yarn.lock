@@ -66,10 +66,10 @@
     qs "^6.6.0"
     shortid "^2.2.14"
 
-"@ima-worldhealth/dhis2-crawler@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@ima-worldhealth/dhis2-crawler/-/dhis2-crawler-0.3.0.tgz#92e4eedb4cf0209f13f01307199d851565394aeb"
-  integrity sha512-kGx263bXSC69BP7nj88kM5N+jBGKgfiK/9d90e99qQ4ph0+kFfp4ycrQEnjbD60qSVPhtw3sUc+fH4ATvTwsMw==
+"@ima-worldhealth/dhis2-crawler@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/dhis2-crawler/-/dhis2-crawler-0.4.0.tgz#2f9e06be1ac29bb2a3fdd6e27e038f4fbb9141e3"
+  integrity sha512-AqsGsoNdf1M8+fwjoktpNRvP6uIHm6ALwfLHW1IX9Ks2rySnea98cZj2T9SKwwB9gNLPnQQC0CtCMeYoIkEe7g==
   dependencies:
     debug "^4.1.1"
     delay "^4.1.0"
