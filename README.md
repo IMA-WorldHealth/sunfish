@@ -1,8 +1,6 @@
 Sunfish
 -------
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/IMA-WorldHealth/sunfish.svg)](https://greenkeeper.io/)
-
 Sunfish is an application to screenshot DHIS2 dashboards into PDFs and email them to members of user groups
 on a set schedule.
 
@@ -47,5 +45,5 @@ When a schedule is run, the following events take place:
  9. Everything is shut down and cleaned up.
 
 
-
-[LICENSE](./LICENSE)
+### LICENSE
+[MIT](./LICENSE)

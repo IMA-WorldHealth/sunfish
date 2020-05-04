@@ -1,0 +1,84 @@
+extends ../layout.pug
+
+block content
+  - const action = `/schedules/${schedule.id}/edit`;
+  form(name="schedule" method="POST"  action=action  autocomplete="off")
+    .container
+      .columns
+        .column.col-12
+          h3 #{t('SCHEDULES.EDIT')}
+        .column.col-5
+          .form-group
+            label.form-label #{t('SCHEDULES.SUBJECT')}
+            input(type="text", name="subject", required, autocomplete="off" value=schedule.subject).form-input
+
+          .form-group
+            label.form-label #{t('SCHEDULES.BODY')}
+            textarea(name="body", rows="20", required, autocomplete="off").form-input #{schedule.body}
+
+        .column.col-5
+
+          .form-group
+            label.form-label #{t('SCHEDULES.GROUP')}
+            select(name="group_id", required).form-select
+              option(disabled) #{t('SCHEDULES.GROUP_SELECT')}
+              each group in userGroups
+                - const isSelected = (group.id === schedule.userGroupId);
+                option(value=group.id selected=isSelected).text-capitalize #{group.display_name}
+
+          .form-group
+            label.form-label #{t('SCHEDULES.DASHBOARDS')}
+            select(name="dashboard-ids", size=8, required, multiple).form-select
+              each dashboard in dashboards
+                - const isSelected = schedule.dashboardIds.includes(dashboard.id);
+                option(value=dashboard.id selected=isSelected).text-capitalize #{dashboard.display_name}
+
+          .form-group
+            label.form-label #{t('SCHEDULES.INCLUDE_GRAPHS')}
+
+            label(for="yes" style="cursor:pointer;").form-radio
+              input(type="radio" id="yes" name="include_graphs" value="1" checked=schedule.include_graphs)
+              i.form-icon
+              span #{t('OPTIONS.YES')}
+
+            label(for="no" style="cursor:pointer;").form-radio
+              input(type="radio" id="no" name="include_graphs" style="" value="0" checked=!schedule.include_graphs)
+              i.form-icon
+              span #{t('OPTIONS.NO')}
+
+          .form-group#frequency
+            label.form-label #{t('SCHEDULES.FREQUENCY')}
+            select(name="frequency").form-select.text-capitalize
+              option(disabled, selected) #{t('SCHEDULES.FREQUENCY_SELECT')}
+              each option, key in { "daily" : "FREQUENCY.DAILY", "weekly" : "FREQUENCY.WEEKLY", "monthly" : "FREQUENCY.MONTHLY" }
+                option(value=key) #{t(option)}
+
+          .form-group.d-invisible#day-of-month
+            label.form-label #{t('FREQUENCY.PICK_DAY_OF_MONTH')}
+            select(name="day-of-month", required).form-select.text-capitalize
+              each option in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+                option(value=option) #{option}
+
+          .form-group.d-invisible#day-of-week
+            label.form-label #{t('FREQUENCY.PICK_DAY_OF_WEEK')}
+            select(name="day-of-week", required).form-select.text-capitalize
+              each option, index in ['DAYS.SUNDAY', 'DAYS.MONDAY', 'DAYS.TUESDAY', 'DAYS.WEDNESDAY', 'DAYS.THURSDAY', 'DAYS.FRIDAY', 'DAYS.SATURDAY']
+                option(value=index) #{t(option)}
+
+          .form-group.d-invisible#hour-of-day
+            label.form-label #{t('FREQUENCY.PICK_HOUR')}
+            select(name="hour-of-day", required).form-select.text-capitalize
+              each option in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+                option(value=option) #{option}:00
+
+          input(type="hidden" name="cron" value=schedule.cron)
+
+      br
+
+      button(type="submit", data-add-loading).btn.btn-primary + #{t('SCHEDULES.SUBMIT_UPDATE')}
+
+  script(type="text/javascript")
+    include ../includes/forms.js
+
+  script(type="text/javascript")
+    include ../includes/create.js
