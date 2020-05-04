@@ -24,10 +24,12 @@
 
   "SCHEDULES": {
     "ACTIONS": "Actions",
-    "ADD": "Add a new Schedule",
+    "ADD": "Add a new schedule",
+    "EDIT": "Edit schedule",
     "BODY": "Email Body",
     "CREATED": "Created",
     "CREATE_SUCCESS": "Successfully created a {{frequency}} schedule.",
+    "EDIT_SUCCESS": "Succesfully edited a {{frequency}} schedule.",
     "DASHBOARDS": "Dashboards",
     "DELETE_SUCCESS": "Successfully removed the schedule.",
     "EMPTY_SUBTITLE": "Click the \"add a new schedule\" button to create your first schedule",
@@ -45,6 +47,7 @@
     "REFRESH" : "Refresh Data Sources",
     "SUBJECT": "Email Subject",
     "SUBMIT": "Create a Schedule",
+    "SUBMIT_UPDATE": "Update Schedule",
     "TITLE" : "Schedules",
     "UNPAUSE_SUCCESS" : "Schedule has been reactivated successfully"
   },
@@ -52,6 +55,7 @@
   "ACTIONS": {
     "TRIGGER": "Run Schedule",
     "DELETE": "Delete Schedule",
+    "EDIT": "Edit Schedule",
     "VIEW": "View Schedule",
     "PAUSE": "Pause Schedule",
     "UNPAUSE": "Unpause Schedule"

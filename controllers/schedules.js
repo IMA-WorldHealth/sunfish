@@ -25,7 +25,7 @@ const queries = {
   `),
   schedule: db.prepare(`
     SELECT s.id, s.subject, s.cron, s.body, g.display_name as userGroupName, s.group_id AS userGroupId,
-      s.include_graphs,
+      s.include_graphs, GROUP_CONCAT(sd.dashboard_id) as dashboardIds,
       GROUP_CONCAT(d.display_name) as dashboards, s.paused, s.created_at
     FROM schedules s JOIN groups g ON s.group_id = g.id
       JOIN schedules_dashboards sd ON s.id = sd.schedule_id
@@ -89,7 +89,7 @@ router.post('/create', (req, res) => {
     parseExpression(req.body.cron);
   } catch (e) {
     req.flash('error', req.t('ERRORS.CRON', { cron: req.body.cron }));
-    res.redirect('/schedules/create');
+    res.redirect('back');
     return;
   }
 
@@ -127,7 +127,58 @@ router.post('/create', (req, res) => {
     res.redirect('/schedules');
   } catch (e) {
     req.flash('error', req.t('ERRORS.GENERIC', e));
-    res.redirect('/schedules/create');
+    res.redirect('back');
+  }
+});
+
+router.post('/:id/edit', (req, res) => {
+  // try parsing the cron syntax.
+  try {
+    parseExpression(req.body.cron);
+  } catch (e) {
+    req.flash('error', req.t('ERRORS.CRON', { cron: req.body.cron }));
+    res.redirect('back');
+    return;
+  }
+
+  try {
+    // gather principle data
+    const data = req.body;
+    data.id = req.params.id;
+
+    // coerce the ids into arrays
+    const dashboardIds = [].concat(data['dashboard-ids']);
+    delete data['dashboard-ids'];
+
+    data.include_graphs = parseInt(data.include_graphs, 10);
+
+    const updateScheduleStatement = db.prepare(`UPDATE schedules SET
+      subject = @subject, body = @body, group_id = @group_id,
+      cron = @cron, include_graphs = @include_graphs
+      WHERE id = @id;`);
+
+    const clearDashboardStatement = db.prepare('DELETE FROM schedules_dashboards WHERE schedule_id = ?;');
+    const linkDashboardStatement = db.prepare('INSERT INTO schedules_dashboards (schedule_id, dashboard_id) VALUES (?, ?);');
+
+    const txn = db.transaction(() => {
+      updateScheduleStatement.run(data);
+
+      clearDashboardStatement.run(data.id);
+
+      dashboardIds.forEach((dashboardId) => {
+        linkDashboardStatement.run(data.id, dashboardId);
+      });
+    });
+
+    txn();
+
+    attendant.refreshAllSchedules();
+
+    req.flash('success', req.t('SCHEDULES.EDIT_SUCCESS', data));
+    res.redirect('/schedules');
+  } catch (e) {
+    req.flash('error', req.t('ERRORS.GENERIC', e));
+    res.redirect('back');
   }
 });
 
@@ -136,6 +187,16 @@ router.get('/:id/details', (req, res) => {
   schedule.dashboards = schedule.dashboards.split(',');
 
   res.render('schedules/details', { schedule });
+});
+
+router.get('/:id/edit', (req, res) => {
+  const schedule = queries.schedule.get(req.params.id);
+  schedule.dashboards = schedule.dashboards.split(',');
+
+  const dashboards = queries.dashboards.all();
+  const userGroups = queries.groups.all();
+
+  res.render('schedules/edit', { schedule, dashboards, userGroups });
 });
 
 router.get('/:id/delete', (req, res) => {
@@ -157,7 +218,6 @@ router.get('/:id/trigger', (req, res) => {
   executor.runScheduledTask(schedule);
   res.redirect('details');
 });
-
 
 router.get('/:id/pause', (req, res) => {
   const schedule = queries.schedule.get(req.params.id);

@@ -53,6 +53,12 @@ block content
                           span(style="padding-left:0.6em;") #{t('ACTIONS.TRIGGER')}
 
                       li.menu-item
+                        - const editUrl = `/schedules/${row.id}/edit`;
+                        a(href=editUrl).text-primary
+                          i.icon.icon-edit
+                          span(style="padding-left:0.6em;") #{t('ACTIONS.EDIT')}
+
+                      li.menu-item
                         - const pauseUrl = `/schedules/${row.id}/pause`;
                         if !row.paused
                           a(href=pauseUrl).text-warning

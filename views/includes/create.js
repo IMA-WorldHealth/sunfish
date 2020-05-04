@@ -82,7 +82,7 @@ form.addEventListener('submit', () => {
   const weekValue = dayOfWeekSelect.value;
   const dayValue = dayOfMonthSelect.value;
 
-  let crontab;
+  let crontab = cron.value;
   switch (frequencySelect.value) {
     case 'daily':
       crontab = `0 ${hourValue} * * *`;

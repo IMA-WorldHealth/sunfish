@@ -21,15 +21,17 @@
 
   "ERRORS": {
     "CRON": "Erreur! Impossible d'analyser le calendrier. La syntaxe cron \"{{cron}}}\" n'est pas valide.",
-    "GENERIC": "Oups! Une erreur s'est produite avec le code {{code}}."
+    "GENERIC": "Oups! Une erreur s'est produite avec le code {{code}} {{name}}."
   },
 
   "SCHEDULES": {
     "ACTIONS": "Actes",
     "ADD": "Ajouter un nouvel horaire",
+    "EDIT": "Modifier l'horaire",
     "BODY": "Message",
     "CREATED": "Créé",
-    "CREATE_SUCCESS": "Création réussie d'une planification {{frequency}}.",
+    "CREATE_SUCCESS": "Création réussie de l'horaire  {{frequency}}.",
+    "EDIT_SUCCESS": "Modification réussie de l'horaire {{frequency}}.",
     "DASHBOARDS": "Tableaux de bord",
     "DELETE_SUCCESS": "Supprimé avec succès l'horaire.",
     "EMPTY_SUBTITLE": "Cliquez sur le bouton \"ajouter un nouvel horaire\" pour créer votre premier horaire.",
@@ -47,6 +49,7 @@
     "REFRESH" : "Actualiser les sources de données",
     "SUBJECT": "Sujet",
     "SUBMIT": "Créer un horaire",
+    "SUBMIT_UPDATE": "Mettre a jour l'horaire",
     "TITLE" : "Les horaires",
     "UNPAUSE_SUCCESS" : "Redémarré l'horaire avec succès"
   },
@@ -54,6 +57,7 @@
   "ACTIONS": {
     "TRIGGER": "Exécuter l'horaire",
     "DELETE": "Effacer l'horaire",
+    "EDIT": "Modifier l'horaire",
     "VIEW": "Voir l'horaire",
     "PAUSE": "Mettre en pause l'horaire",
     "UNPAUSE": "Redémarrer l'horaire"
