@@ -50,7 +50,7 @@
   "scripts": {
     "test": "ava",
     "start": "node index.js",
-    "release": "release-it --disable-metrics"
+    "release": "release-it --disable-metrics --github.release"
   },
   "keywords": [
     "DHIS2"
