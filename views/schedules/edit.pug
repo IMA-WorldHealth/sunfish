@@ -1,7 +1,7 @@
 extends ../layout.pug
 
 block content
-  - const action = `/schedules/${schedule.id}/edit`;
+  - var action = `/schedules/${schedule.id}/edit`;
   form(name="schedule" method="POST"  action=action  autocomplete="off")
     .container
       .columns
@@ -23,14 +23,14 @@ block content
             select(name="group_id", required).form-select
               option(disabled) #{t('SCHEDULES.GROUP_SELECT')}
               each group in userGroups
-                - const isSelected = (group.id === schedule.userGroupId);
+                - var isSelected = (group.id === schedule.userGroupId);
                 option(value=group.id selected=isSelected).text-capitalize #{group.display_name}
 
           .form-group
             label.form-label #{t('SCHEDULES.DASHBOARDS')}
             select(name="dashboard-ids", size=8, required, multiple).form-select
               each dashboard in dashboards
-                - const isSelected = schedule.dashboardIds.includes(dashboard.id);
+                - var isSelected = schedule.dashboardIds.includes(dashboard.id);
                 option(value=dashboard.id selected=isSelected).text-capitalize #{dashboard.display_name}
 
           .form-group

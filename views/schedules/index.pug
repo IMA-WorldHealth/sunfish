@@ -41,25 +41,25 @@ block content
                     ul(style="width:200px;").menu
 
                       li.menu-item
-                        - const detailUrl = `/schedules/${row.id}/details`;
+                        - var detailUrl = `/schedules/${row.id}/details`;
                         a(href=detailUrl).text-primary
                           i.icon.icon-edit
                           span(style="padding-left:0.6em;") #{t('ACTIONS.VIEW')}
 
                       li.menu-item
-                        - const triggerUrl = `/schedules/${row.id}/trigger`;
+                        - var triggerUrl = `/schedules/${row.id}/trigger`;
                         a(href=triggerUrl).text-success
                           i.icon.icon-refresh
                           span(style="padding-left:0.6em;") #{t('ACTIONS.TRIGGER')}
 
                       li.menu-item
-                        - const editUrl = `/schedules/${row.id}/edit`;
+                        - var editUrl = `/schedules/${row.id}/edit`;
                         a(href=editUrl).text-primary
                           i.icon.icon-edit
                           span(style="padding-left:0.6em;") #{t('ACTIONS.EDIT')}
 
                       li.menu-item
-                        - const pauseUrl = `/schedules/${row.id}/pause`;
+                        - var pauseUrl = `/schedules/${row.id}/pause`;
                         if !row.paused
                           a(href=pauseUrl).text-warning
                             i.icon.icon-stop
@@ -72,7 +72,7 @@ block content
                       li.divider
 
                       li.menu-item
-                        - const deleteUrl = `/schedules/${row.id}/delete`;
+                        - var deleteUrl = `/schedules/${row.id}/delete`;
                         a(href=deleteUrl).text-error
                           i.icon.icon-delete
                           span(style="padding-left:0.6em;") #{t('ACTIONS.DELETE')}
