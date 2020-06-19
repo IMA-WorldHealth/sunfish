@@ -1,0 +1,4 @@
+bors.toml
+test/
+.travis.yml
+.eslint*
