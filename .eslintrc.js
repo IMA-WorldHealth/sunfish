@@ -1,21 +1,21 @@
 module.exports = {
-  env: {
-    browser: true,
-    commonjs: true,
-    es6: true,
-    node: true,
+  env : {
+    browser : true,
+    commonjs : true,
+    es6 : true,
+    node : true,
   },
-  extends: [
+  extends : [
     'airbnb-base',
   ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+  globals : {
+    Atomics : 'readonly',
+    SharedArrayBuffer : 'readonly',
   },
-  parserOptions: {
-    ecmaVersion: 2018,
+  parserOptions : {
+    ecmaVersion : 2018,
   },
-  rules: {
-    "key-spacing": [ "error", { "beforeColon" : true }]
+  rules : {
+    'key-spacing' : ['error', { beforeColon : true }],
   },
 };
