@@ -53,6 +53,12 @@ block content
                           span(style="padding-left:0.6em;") #{t('ACTIONS.TRIGGER')}
 
                       li.menu-item
+                        - var testUrl = `/schedules/${row.id}/test`;
+                        a(href=testUrl target="_blank" rel="noopener noreferrer").text-success
+                          i.icon.icon-download
+                          span(style="padding-left:0.6em;") #{t('ACTIONS.TEST')}
+
+                      li.menu-item
                         - var editUrl = `/schedules/${row.id}/edit`;
                         a(href=editUrl).text-primary
                           i.icon.icon-edit
