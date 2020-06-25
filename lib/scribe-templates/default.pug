@@ -59,7 +59,7 @@ html
           label(style="font-size: 1.25em;") #{table.label}
           img(src=table.uri)
 
-      if tables.length === 0
+      if report.tables.length === 0
         p(style="text-align:center") No tables found to render.
 
       for graph of report.graphs
