@@ -60,7 +60,8 @@
     "EDIT": "Modifier l'horaire",
     "VIEW": "Voir l'horaire",
     "PAUSE": "Mettre en pause l'horaire",
-    "UNPAUSE": "Redémarrer l'horaire"
+    "UNPAUSE": "Redémarrer l'horaire",
+    "TEST" : "Essayer l'horaire"
   },
 
   "TOOLTIPS":{
