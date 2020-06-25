@@ -58,7 +58,8 @@
     "EDIT": "Edit Schedule",
     "VIEW": "View Schedule",
     "PAUSE": "Pause Schedule",
-    "UNPAUSE": "Unpause Schedule"
+    "UNPAUSE": "Unpause Schedule",
+    "TEST" : "Test Schedule"
   },
 
   "TOOLTIPS":{
