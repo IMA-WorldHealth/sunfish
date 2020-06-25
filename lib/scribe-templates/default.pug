@@ -1,0 +1,69 @@
+doctype html
+
+html
+  head
+    title #{report.title}
+    meta(charset="utf-8")
+    link(rel="stylesheet" type="text/css" href="http://unpkg.com/normalize.css@8.0.1/normalize.css")
+    link(rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css")
+    style.
+      .container {
+        width: 100%
+        max-width: 1600px;
+      }
+      .cx-title {
+        padding-top: 0;
+        margin-top: 0;
+        text-align: center;
+      }
+
+      .cx-annotation {
+        text-align: right;
+      }
+
+      .cx-hr {
+        border: 0;
+        height: 1px;
+        background : black;
+        margin-top: 0;
+        margin-bottom: 0.25em;
+      }
+
+      .row {
+        page-break-inside: avoid;
+      }
+
+      .row img {
+        margin : 5px;
+        width: 100%;
+        height: auto;
+      }
+
+  body
+    header.container
+      .row(style="position:relative")
+        .one-half.column
+          - var lnk = `${context.path}/scribe-templates/images/logo.jpg`;
+          img(src=lnk alt="IMA World Health Logo")
+        .one-half.column.cx-annotation(style="position: absolute; bottom:0; right: 0;")
+          strong DHIS2 | #{ report.date }
+
+      hr.cx-hr
+
+    section.container
+      h5.cx-title #{ report.title }
+
+    main.container
+      for table of report.tables
+        .row
+          label(style="font-size: 1.25em;") #{table.label}
+          img(src=table.uri)
+
+      if tables.length === 0
+        p(style="text-align:center") No tables found to render.
+
+      for graph of report.graphs
+        .row
+          for img of graph
+            .one-half.column
+              img(src=img)
