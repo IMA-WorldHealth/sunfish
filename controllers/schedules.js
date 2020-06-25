@@ -13,9 +13,9 @@ const { refreshUserGroupList } = require('./userGroups');
 dayjs.extend(relativeTime);
 
 const queries = {
-  schedules: db.prepare(`
+  schedules : db.prepare(`
     SELECT s.id, s.subject, s.cron, g.display_name as userGroupName, s.group_id AS userGroupId,
-      s.include_graphs,
+      s.include_graphs, s.is_running,
       GROUP_CONCAT(d.display_name) as dashboards, s.paused, s.created_at
     FROM schedules s JOIN groups g ON s.group_id = g.id
       JOIN schedules_dashboards sd ON s.id = sd.schedule_id
@@ -23,9 +23,9 @@ const queries = {
     GROUP BY s.id
     ORDER BY s.created_at;
   `),
-  schedule: db.prepare(`
+  schedule : db.prepare(`
     SELECT s.id, s.subject, s.cron, s.body, g.display_name as userGroupName, s.group_id AS userGroupId,
-      s.include_graphs, GROUP_CONCAT(sd.dashboard_id) as dashboardIds,
+      s.include_graphs, GROUP_CONCAT(sd.dashboard_id) as dashboardIds, s.is_running,
       GROUP_CONCAT(d.display_name) as dashboards, s.paused, s.created_at
     FROM schedules s JOIN groups g ON s.group_id = g.id
       JOIN schedules_dashboards sd ON s.id = sd.schedule_id
@@ -34,8 +34,8 @@ const queries = {
     GROUP BY s.id
     ORDER BY s.created_at;
   `),
-  dashboards: db.prepare('SELECT * FROM dashboards ORDER BY display_name;'),
-  groups: db.prepare('SELECT * FROM groups ORDER BY display_name;'),
+  dashboards : db.prepare('SELECT * FROM dashboards ORDER BY display_name;'),
+  groups : db.prepare('SELECT * FROM groups ORDER BY display_name;'),
 };
 
 const router = express.Router();
@@ -56,8 +56,8 @@ router.get('/', (req, res) => {
     const prevRunTimeDate = parsed2.prev().toDate();
     const prevRunTimeLabel = dayjs(prevRunTimeDate).fromNow();
 
-    Object.assign(schedule, { nextRunTimeLabel, nextRunTime: nextRunTimeDate });
-    Object.assign(schedule, { prevRunTimeLabel, prevRunTime: prevRunTimeDate });
+    Object.assign(schedule, { nextRunTimeLabel, nextRunTime : nextRunTimeDate });
+    Object.assign(schedule, { prevRunTimeLabel, prevRunTime : prevRunTimeDate });
   });
 
   res.render('schedules', { schedules });
@@ -88,7 +88,7 @@ router.post('/create', (req, res) => {
   try {
     parseExpression(req.body.cron);
   } catch (e) {
-    req.flash('error', req.t('ERRORS.CRON', { cron: req.body.cron }));
+    req.flash('error', req.t('ERRORS.CRON', { cron : req.body.cron }));
     res.redirect('back');
     return;
   }
@@ -136,7 +136,7 @@ router.post('/:id/edit', (req, res) => {
   try {
     parseExpression(req.body.cron);
   } catch (e) {
-    req.flash('error', req.t('ERRORS.CRON', { cron: req.body.cron }));
+    req.flash('error', req.t('ERRORS.CRON', { cron : req.body.cron }));
     res.redirect('back');
     return;
   }
@@ -217,6 +217,17 @@ router.get('/:id/trigger', (req, res) => {
 
   executor.runScheduledTask(schedule);
   res.redirect('details');
+});
+
+router.get('/:id/test', async (req, res) => {
+  const schedule = queries.schedule.get(req.params.id);
+
+  res.setTimeout(2 * 60 * 1000); // timeout after a two minutes
+
+  schedule.dashboards = schedule.dashboards.split(',');
+
+  const [board] = await executor.testScheduledTask(schedule);
+  res.sendFile(board);
 });
 
 router.get('/:id/pause', (req, res) => {
