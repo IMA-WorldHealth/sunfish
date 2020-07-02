@@ -26,7 +26,7 @@ const queries = {
   schedule : db.prepare(`
     SELECT s.id, s.subject, s.cron, s.body, g.display_name as userGroupName, s.group_id AS userGroupId,
       s.include_graphs, GROUP_CONCAT(sd.dashboard_id) as dashboardIds, s.is_running,
-      GROUP_CONCAT(d.display_name) as dashboards, s.paused, s.created_at
+      GROUP_CONCAT(d.display_name) as dashboardNames, s.paused, s.created_at
     FROM schedules s JOIN groups g ON s.group_id = g.id
       JOIN schedules_dashboards sd ON s.id = sd.schedule_id
       JOIN dashboards d ON sd.dashboard_id = d.id
@@ -213,7 +213,12 @@ router.get('/:id/delete', (req, res) => {
 router.get('/:id/trigger', (req, res) => {
   const schedule = queries.schedule.get(req.params.id);
 
-  schedule.dashboards = schedule.dashboards.split(',');
+  const dashboardNames = schedule.dashboardNames.split(',');
+  const dashboardIds = schedule.dashboardIds.split(',');
+
+  // make a map of name => ids of dashboards
+  schedule.dashboards = dashboardNames
+    .map((name, idx) => ({ name, id : dashboardIds[idx] }));
 
   executor.runScheduledTask(schedule);
   res.redirect('details');
@@ -222,11 +227,17 @@ router.get('/:id/trigger', (req, res) => {
 router.get('/:id/test', async (req, res) => {
   const schedule = queries.schedule.get(req.params.id);
 
-  res.setTimeout(2 * 60 * 1000); // timeout after a two minutes
+  res.setTimeout(5 * 60 * 1000); // timeout after a two minutes
 
-  schedule.dashboards = schedule.dashboards.split(',');
+  const dashboardNames = schedule.dashboardNames.split(',');
+  const dashboardIds = schedule.dashboardIds.split(',');
+
+  // make a map of name => ids of dashboards
+  schedule.dashboards = dashboardNames
+    .map((name, idx) => ({ name, id : dashboardIds[idx] }));
 
   const [board] = await executor.testScheduledTask(schedule);
+
   res.sendFile(board);
 });
 
