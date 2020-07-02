@@ -184,14 +184,22 @@ router.post('/:id/edit', (req, res) => {
 
 router.get('/:id/details', (req, res) => {
   const schedule = queries.schedule.get(req.params.id);
-  schedule.dashboards = schedule.dashboards.split(',');
+
+  const dashboardNames = schedule.dashboardNames.split(',');
+  const dashboardIds = schedule.dashboardIds.split(',');
+  schedule.dashboards = dashboardNames
+    .map((name, idx) => ({ name, id : dashboardIds[idx] }));
 
   res.render('schedules/details', { schedule });
 });
 
 router.get('/:id/edit', (req, res) => {
   const schedule = queries.schedule.get(req.params.id);
-  schedule.dashboards = schedule.dashboards.split(',');
+
+  const dashboardNames = schedule.dashboardNames.split(',');
+  const dashboardIds = schedule.dashboardIds.split(',');
+  schedule.dashboards = dashboardNames
+    .map((name, idx) => ({ name, id : dashboardIds[idx] }));
 
   const dashboards = queries.dashboards.all();
   const userGroups = queries.groups.all();
@@ -236,7 +244,8 @@ router.get('/:id/test', async (req, res) => {
   schedule.dashboards = dashboardNames
     .map((name, idx) => ({ name, id : dashboardIds[idx] }));
 
-  const [board] = await executor.testScheduledTask(schedule);
+  const asHTML = req.query.html;
+  const [board] = await executor.testScheduledTask(schedule, asHTML);
 
   res.sendFile(board);
 });

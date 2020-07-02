@@ -3,7 +3,7 @@
     "@ima-worldhealth/coral": "^2.0.0",
     "@ima-worldhealth/cron-scheduler": "^1.4.0",
     "@ima-worldhealth/dhis2-api": "^0.1.0",
-    "@ima-worldhealth/dhis2-crawler": "^0.5.1",
+    "@ima-worldhealth/dhis2-crawler": "^0.5.3",
     "@sendgrid/mail": "^7.1.1",
     "better-sqlite3": "^7.0.1",
     "connect-redis": "^4.0.0",
