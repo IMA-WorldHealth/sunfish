@@ -37,7 +37,7 @@
     "release-it": "^13.0.0"
   },
   "name": "@ima-worldhealth/sunfish",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "A webapp for configuring DHIS2 email reports",
   "main": "index.js",
   "directories": {
