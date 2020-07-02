@@ -14,7 +14,8 @@
     "USERNAME" : "Username",
     "PASSWORD" : "Password",
     "SUBMIT" : "Test & Save Settings",
-    "ERROR" : "An error occured during registration.  Please check that the username/password combination are correct for the API route."
+    "ERROR" : "An error occured during registration.  Please check that the username/password combination are correct for the API route.",
+    "SETUP" : "Setup"
   },
 
   "ERRORS": {

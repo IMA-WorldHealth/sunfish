@@ -16,7 +16,11 @@ const userGroups = require('./userGroups');
  * password and web API target.
  */
 router.get('/', (req, res) => {
-  res.render('setup.pug');
+  const credentials = db.prepare(`
+    SELECT username, password, server FROM credentials
+  `).get();
+
+  res.render('setup.pug', { credentials });
 });
 
 /**
@@ -29,7 +33,7 @@ router.get('/', (req, res) => {
  */
 router.post('/', async (req, res) => {
   const { server, username, password } = req.body;
-  api.configure({ url: server });
+  api.configure({ url : server });
 
   debug('Setting credentials for API');
   try {
@@ -38,7 +42,7 @@ router.post('/', async (req, res) => {
     debug('Credentials accepted.');
 
     // login successful, register the credentials with the API
-    api.configure({ url: server, auth: { username, password } });
+    api.configure({ url : server, auth : { username, password } });
 
     db.prepare('DELETE FROM credentials;').run();
     db.prepare('INSERT INTO credentials (username, password, server) VALUES (?, ?, ?);')
