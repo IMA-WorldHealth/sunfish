@@ -54,7 +54,7 @@ html
       h5.cx-title #{ report.title }
 
     main.container
-      for table of report.tables
+      each table in report.tables
         .row
           label(style="font-size: 1.25em;") #{table.label}
           img(src=table.uri)
@@ -62,7 +62,7 @@ html
       if report.tables.length === 0
         p(style="text-align:center") No tables found to render.
 
-      for graph of report.graphs
+      each graph in report.graphs
         .row
           for img of graph
             .one-half.column

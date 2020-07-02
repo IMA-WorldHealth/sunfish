@@ -39,7 +39,7 @@ block content
                 p.title-subtitle
                   each dashboard in schedule.dashboards
                     span.d-block
-                      a(href="#", title=dashboard) #{dashboard}
+                      a(href="#", title=dashboard.name) #{dashboard.name}
 
       .column.col-4
         .panel
