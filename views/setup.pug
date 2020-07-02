@@ -16,13 +16,13 @@ block content
         form(name="install", method="POST", action="/setup", autocomplete="off")
           .form-group
             label.form-label #{t('INSTALL.DHIS2_URL')}
-            input(type="url",name="server", autocomplete="off",required, placeholder="https://demo.dhis2.org/api/").form-input
+            input(type="url" name="server" value=credentials.server autocomplete="off" required placeholder="https://demo.dhis2.org/api/").form-input
           .form-group
             label.form-label #{t('INSTALL.USERNAME')}
-            input(type="text",name="username", autocomplete="off", required, placeholder="demo").form-input
+            input(type="text" name="username" value=credentials.username autocomplete="off" required placeholder="demo").form-input
           .form-group
             label.form-label #{t('INSTALL.PASSWORD')}
-            input(type="password",name="password", required, placeholder="*****").form-input
+            input(type="password" name="password" value=credentials.password required placeholder="*****").form-input
 
           button(type="submit", data-add-loading).btn.btn-primary
             span #{t('INSTALL.SUBMIT')}

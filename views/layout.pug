@@ -23,11 +23,14 @@ html
       header(style="padding:0.75em").navbar
         section.navbar-section
           figure(style="background-color:inherit;").avatar.avatar-lg.navbar-brand
-            img(src="/logo.svg", alt="Sunfish", title="Sunfish Email App")
+            img(src="/logo.svg", alt="Sunfish Logo", title="Sunfish Email App")
 
           a(href="/schedules").btn.btn-link #{t('SCHEDULES.TITLE')}
 
+
         section.navbar-section
+          a(href="/setup").btn.btn-link #{t('INSTALL.SETUP')}
+
           a(href="/auth/logout").btn.btn-link #{t('LOGIN.LOGOUT')}
 
     section.toasts
