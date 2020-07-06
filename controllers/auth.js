@@ -8,8 +8,8 @@ const router = express.Router();
 
 const db = require('../lib/db');
 
-const dashboards = require('../controllers/dashboards');
-const userGroups = require('../controllers/userGroups');
+const dashboards = require('./dashboards');
+const userGroups = require('./userGroups');
 
 function configureAPI() {
   const credentials = db.prepare('SELECT * FROM credentials LIMIT 1;').get();
@@ -27,7 +27,7 @@ function configureAPI() {
   debug(`Using DHIS2 password: ${mask}`);
 
   // configure the dhis2API
-  api.configure({ url: server, auth: { username, password } });
+  api.configure({ url : server, auth : { username, password } });
 
   setTimeout(() => {
     // refresh data values
@@ -35,7 +35,6 @@ function configureAPI() {
     userGroups.refreshUserGroupList();
   }, 250);
 }
-
 
 // make passport use the dhis2 API as an authentication agent for this app.
 passport.use(new LocalStrategy((username, password, done) => {
@@ -50,7 +49,7 @@ passport.use(new LocalStrategy((username, password, done) => {
       done(null, data);
     })
     .catch(() => {
-      done(null, false, { message: 'Bad username and password combination' });
+      done(null, false, { message : 'Bad username and password combination' });
     });
 }));
 
@@ -61,7 +60,7 @@ passport.deserializeUser((id, done) => {
     const { data } = db.prepare('SELECT data FROM authentication WHERE id = ?;').get(id);
     done(null, JSON.parse(data));
   } catch (e) {
-    done(null, false, { message: 'Please log in again.' });
+    done(null, false, { message : 'Please log in again.' });
   }
 });
 
@@ -72,12 +71,12 @@ function postLogin(req, res) {
 
 router.post('/login',
   passport.authenticate('local', {
-    failureRedirect: '/login',
-    failureFlash: true,
+    failureRedirect : '/login',
+    failureFlash : true,
   }), postLogin);
 
 router.get('/login', (req, res) => {
-  res.render('auth/login', { title: `Login to ${process.env.APP_NAME}` });
+  res.render('auth/login', { title : `Login to ${process.env.APP_NAME}` });
 });
 
 router.get('/logout', (req, res) => {

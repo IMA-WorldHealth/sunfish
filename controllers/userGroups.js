@@ -24,7 +24,7 @@ async function refreshUserGroupList() {
 
 router.get('/', (req, res) => {
   const { data } = db.prepare('SELECT * FROM groups;').all();
-  res.render('data-list', { data, header: 'User Groups' });
+  res.render('data-list', { data, header : 'User Groups' });
 });
 
 module.exports = router;
