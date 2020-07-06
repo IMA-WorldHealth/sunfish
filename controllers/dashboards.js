@@ -24,7 +24,7 @@ async function refreshDashboardList() {
 
 router.get('/', (req, res) => {
   const data = db.prepare('SELECT * FROM dashboards;').all();
-  res.render('data-list', { data, header: 'Dashboards' });
+  res.render('data-list', { data, header : 'Dashboards' });
 });
 
 module.exports = router;

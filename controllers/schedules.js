@@ -229,13 +229,14 @@ router.get('/:id/trigger', (req, res) => {
     .map((name, idx) => ({ name, id : dashboardIds[idx] }));
 
   executor.runScheduledTask(schedule);
+
   res.redirect('details');
 });
 
 router.get('/:id/test', async (req, res) => {
   const schedule = queries.schedule.get(req.params.id);
 
-  res.setTimeout(5 * 60 * 1000); // timeout after a two minutes
+  res.setTimeout(5 * 60 * 1000); // timeout after a five minutes
 
   const dashboardNames = schedule.dashboardNames.split(',');
   const dashboardIds = schedule.dashboardIds.split(',');
