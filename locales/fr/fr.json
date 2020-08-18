@@ -3,28 +3,24 @@
     "SUBMIT": "Se Connecter",
     "USERNAME": "Nom d'utilisateur",
     "PASSWORD": "Mot de passe",
-    "NOTE": "Notez qu'il s'agit des mêmes informations d'identification que celles utilisées pour l'instance ima-assp.org",
     "APP": "Se connecter à {{app.name}}",
-    "LOGOUT" : "Se déconnecter"
+    "LOGOUT": "Se déconnecter",
+    "NOTE": "Notez qu'il s'agit des mêmes informations d'identification que celles utilisées pour l'instance ima-assp.org"
   },
-
-  "INSTALL" : {
-    "APP" : "First Run Setup",
-    "INSTRUCTIONS" : "It looks like you are installing {{app.name}} for the first time!  Please configure the credentials for the {{app.name}} to interact with DHIS2.  Provide the DHIS2 web API URL and enter the username and password for an account on DHIS2. You will only be required to do this once.",
-    "DHIS2_URL" : "Web API URL",
-    "USERNAME" : "Username",
-    "PASSWORD" : "Password",
-    "SUBMIT" : "Test & Save Settings",
-    "ERROR" : "An error occured during registration.  Please check that the username/password combination are correct for the API route.",
-    "SETUP" : "Configurer"
+  "INSTALL": {
+    "APP": "Configuration de la première exécution",
+    "INSTRUCTIONS": "Il semble que vous installez {{app.name}} pour la première fois! Veuillez configurer les informations d'identification pour que {{app.name}} interagisse avec DHIS2. Fournissez l'URL de l'API Web DHIS2 et entrez le nom d'utilisateur et le mot de passe d'un compte sur DHIS2. Vous ne serez tenu de le faire qu'une seule fois.",
+    "DHIS2_URL": "URL de l'API Web",
+    "USERNAME": "Nom d'utilisateur",
+    "PASSWORD": "Mot de passe",
+    "SUBMIT": "Enregistrer les paramètres",
+    "ERROR": "Une erreur s'est produite lors de l'inscription. Veuillez vérifier que la combinaison nom d'utilisateur / mot de passe est correcte pour la route API.",
+    "SETUP": "Configurer"
   },
-
-
   "ERRORS": {
     "CRON": "Erreur! Impossible d'analyser le calendrier. La syntaxe cron \"{{cron}}}\" n'est pas valide.",
     "GENERIC": "Oups! Une erreur s'est produite avec le code {{code}} {{name}}."
   },
-
   "SCHEDULES": {
     "ACTIONS": "Actes",
     "ADD": "Ajouter un nouvel horaire",
@@ -39,22 +35,21 @@
     "EMPTY_TITLE": "Il n'y a pas d'horaires enregistrés",
     "FREQUENCY": "La fréquence",
     "FREQUENCY_SELECT": "Sélectionnez une fréquence",
-    "GROUP": "Groupe d'utilisateurs",
     "GROUP_SELECT": "Choisissez un groupe d'utilisateurs",
-    "INCLUDE_GRAPHS" : "Inclure des graphiques dans le rapport PDF",
+    "GROUP": "Groupe d'utilisateurs",
+    "INCLUDE_GRAPHS": "Inclure des graphiques dans le rapport PDF",
     "LAST_RUN": "Dernière exécution",
-    "LOG" : "Registre",
+    "LOG": "Registre",
     "NEXT_RUN": "Prochaine exécution",
-    "OVERVIEW" : "Détails",
-    "PAUSE_SUCCESS" : "Interrompit l'horaire avec succès",
-    "REFRESH" : "Actualiser les sources de données",
+    "OVERVIEW": "Détails",
+    "PAUSE_SUCCESS": "Interrompit l'horaire avec succès",
+    "REFRESH": "Actualiser les sources de données",
     "SUBJECT": "Sujet",
     "SUBMIT": "Créer un horaire",
     "SUBMIT_UPDATE": "Mettre a jour l'horaire",
-    "TITLE" : "Les horaires",
-    "UNPAUSE_SUCCESS" : "Redémarré l'horaire avec succès"
+    "TITLE": "Les horaires",
+    "UNPAUSE_SUCCESS": "Redémarré l'horaire avec succès"
   },
-
   "ACTIONS": {
     "TRIGGER": "Exécuter l'horaire",
     "DELETE": "Effacer l'horaire",
@@ -62,15 +57,13 @@
     "VIEW": "Voir l'horaire",
     "PAUSE": "Mettre en pause l'horaire",
     "UNPAUSE": "Redémarrer l'horaire",
-    "TEST" : "Essayer l'horaire"
+    "TEST": "Essayer l'horaire"
   },
-
-  "TOOLTIPS":{
+  "TOOLTIPS": {
     "VIEW": "Voir l'horaire",
     "TRIGGER": "Déclenche le programme pour qu'il s'exécute immédiatement",
     "DELETE": "Supprimer l'horaire. \nAttention! Ça ne peut pas être annulé."
   },
-
   "DAYS": {
     "SUNDAY": "Dimanche",
     "MONDAY": "Lundi",
@@ -80,7 +73,6 @@
     "FRIDAY": "Vendredi",
     "SATURDAY": "Samedi"
   },
-
   "FREQUENCY": {
     "DAILY": "Journalier",
     "WEEKLY": "Hebdomadaire",
@@ -89,9 +81,8 @@
     "PICK_DAY_OF_WEEK": "Choisissez le jour de la semaine",
     "PICK_HOUR": "Choisissez l'heure du jour"
   },
-
-  "OPTIONS" : {
-    "YES" : "Oui",
-    "NO" : "Non"
+  "OPTIONS": {
+    "YES": "Oui",
+    "NO": "Non"
   }
 }
