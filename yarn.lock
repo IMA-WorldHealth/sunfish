@@ -104,17 +104,17 @@
     release-it "^14.0.1"
     shortid "^2.2.14"
 
-"@ima-worldhealth/dhis2-crawler@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@ima-worldhealth/dhis2-crawler/-/dhis2-crawler-0.6.0.tgz#37acc7d21258e560811f8b6adeb18994bafe6056"
-  integrity sha512-oysaO5tWd6zMQx9trbvvV/7ObT+jxjZgsmdvINnNkKNQ5yqyOySLB6VWwfvilpwL0tz39firNhjr6y0Xaje3Rg==
+"@ima-worldhealth/dhis2-crawler@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/dhis2-crawler/-/dhis2-crawler-0.7.0.tgz#2c72f71729657a71525aa67da1a293366af55c40"
+  integrity sha512-chSqNv84OP/+WvlBWpzZxC3n1tb3K55Ca150aSJwIq3HjZHRq1L03ArDTU66BeL62CQEKmqzZmnmMUO83vbdgQ==
   dependencies:
     debug "^4.1.1"
     html2canvas "^1.0.0-rc.5"
     puppeteer-autoscroll-down "^0.1.5"
     puppeteer-core "^5.0.0"
     save-svg-as-png "^1.4.11"
-    tempy "^0.6.0"
+    tempy "^1.0.0"
 
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"
@@ -4714,16 +4714,6 @@ temp-dir@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/temp-dir/-/temp-dir-2.0.0.tgz#bde92b05bdfeb1516e804c9c00ad45177f31321e"
   integrity sha512-aoBAniQmmwtcKp/7BzsH8Cxzv8OL736p7v1ihGb5e9DJ9kTwGWHrQrVB5+lfVDzfGrdRzXch+ig7LHaY1JTOrg==
-
-tempy@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/tempy/-/tempy-0.6.0.tgz#65e2c35abc06f1124a97f387b08303442bde59f3"
-  integrity sha512-G13vtMYPT/J8A4X2SjdtBTphZlrp1gKv6hZiOjw14RCWg6GbHuQBGtjlx75xLbYV/wEc0D7G5K4rxKP/cXk8Bw==
-  dependencies:
-    is-stream "^2.0.0"
-    temp-dir "^2.0.0"
-    type-fest "^0.16.0"
-    unique-string "^2.0.0"
 
 tempy@^1.0.0:
   version "1.0.0"
