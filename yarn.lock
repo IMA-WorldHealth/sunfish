@@ -1186,13 +1186,13 @@ cron-converter@^1.0.0:
     moment-timezone "~0.5"
     sprintf-js "~1"
 
-cron-parser@^2.7.3:
-  version "2.18.0"
-  resolved "https://registry.yarnpkg.com/cron-parser/-/cron-parser-2.18.0.tgz#de1bb0ad528c815548371993f81a54e5a089edcf"
-  integrity sha512-s4odpheTyydAbTBQepsqd2rNWGa2iV3cyo8g7zbI2QQYGLVsfbhmwukayS1XHppe02Oy1fg7mg6xoaraVJeEcg==
+cron-parser@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/cron-parser/-/cron-parser-3.0.0.tgz#96bb8f76906b2cebf2f4e9c6b4f869b317be3a4e"
+  integrity sha512-V/kC3jCV/MEhPxtK0pgsp9Wsav/0O3eCCR22mzoKW6n8q2b3dt2TtObBXCyM5NqALKMZfU7i9B2veTHau6G0LQ==
   dependencies:
     is-nan "^1.3.0"
-    moment-timezone "^0.5.31"
+    luxon "^1.25.0"
 
 cross-spawn@^6.0.0:
   version "6.0.5"
@@ -2966,6 +2966,11 @@ lowercase-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/lowercase-keys/-/lowercase-keys-2.0.0.tgz#2603e78b7b4b0006cbca2fbcc8a3202558ac9479"
   integrity sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==
 
+luxon@^1.25.0:
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.25.0.tgz#d86219e90bc0102c0eb299d65b2f5e95efe1fe72"
+  integrity sha512-hEgLurSH8kQRjY6i4YLey+mcKVAWXbDNlZRmM6AgWDJ1cY3atl8Ztf5wEY7VBReFbmGnwQPz7KYJblL8B2k0jQ==
+
 macos-release@^2.2.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/macos-release/-/macos-release-2.4.0.tgz#837b39fc01785c3584f103c5599e0f0c8068b49e"
@@ -3141,7 +3146,7 @@ mkdirp@^1.0.3:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-moment-timezone@^0.5.26, moment-timezone@^0.5.31, moment-timezone@~0.5:
+moment-timezone@^0.5.26, moment-timezone@~0.5:
   version "0.5.31"
   resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.31.tgz#9c40d8c5026f0c7ab46eda3d63e49c155148de05"
   integrity sha512-+GgHNg8xRhMXfEbv81iDtrVeTcWt0kWmTEY1XQK14dICTXnWJnT0dxdlPspwqF3keKMVPXwayEsk1DI0AA/jdA==
