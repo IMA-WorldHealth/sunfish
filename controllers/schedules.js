@@ -251,6 +251,14 @@ router.get('/:id/test', async (req, res) => {
   res.sendFile(board);
 });
 
+// reset the "is_running" indicator if it gets out of sync
+router.get('/:id/reset', (req, res) => {
+  db.prepare('UPDATE schedules SET is_running = 0 WHERE id = ?')
+    .run(req.params.id);
+  req.flash('success', req.t('SCHEDULES.IS_RUNNING_RESET'));
+  res.redirect('/schedules');
+});
+
 router.get('/:id/pause', (req, res) => {
   const schedule = queries.schedule.get(req.params.id);
   const toggle = Number(!schedule.paused);
