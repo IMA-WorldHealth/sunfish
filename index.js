@@ -24,13 +24,13 @@ app.use(helmet());
 app.set('view engine', 'pug');
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended : true }));
 
 app.use(session({
-  store: new RedisStore({ client }),
-  resave: true,
-  saveUninitialized: true,
-  secret: 'b1e9d8a4-39a4-11e9-b7e2-03fe5e35051c',
+  store : new RedisStore({ client }),
+  resave : true,
+  saveUninitialized : true,
+  secret : 'b1e9d8a4-39a4-11e9-b7e2-03fe5e35051c',
 }));
 
 app.get('/logo.svg', (req, res) => {
@@ -47,20 +47,20 @@ i18next
   .use(i18nextMiddleware.LanguageDetector)
   .use(i18nextBackend)
   .init({
-    preload: ['en', 'fr'],
-    backend: { loadPath: path.join(__dirname, '/locales/{{lng}}/{{lng}}.json') },
+    preload : ['en', 'fr'],
+    backend : { loadPath : path.join(__dirname, '/locales/{{lng}}/{{lng}}.json') },
   });
 
 // make it so that we don't have issues with language
 app.use(i18nextMiddleware.handle(i18next, {
-  removeLngFromUrl: true,
+  removeLngFromUrl : true,
 }));
 
 app.use((req, res, next) => {
   res.locals.app = {
-    url: process.env.APP_URL,
-    name: process.env.APP_NAME,
-    email: process.env.APP_EMAIL,
+    url : process.env.APP_URL,
+    name : process.env.APP_NAME,
+    email : process.env.APP_EMAIL,
   };
 
   next();
