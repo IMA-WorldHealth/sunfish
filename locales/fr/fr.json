@@ -38,6 +38,7 @@
     "GROUP": "Groupe d'utilisateurs",
     "GROUP_SELECT": "Choisissez un groupe d'utilisateurs",
     "INCLUDE_GRAPHS": "Inclure des graphiques dans le rapport PDF",
+    "IS_RUNNING_RESET" : "Réinitialisez l'indicateur is_running.",
     "LAST_RUN": "Dernière exécution",
     "LOG": "Registre",
     "NEXT_RUN": "Prochaine exécution",
@@ -56,6 +57,7 @@
     "DELETE": "Effacer l'horaire",
     "EDIT": "Modifier l'horaire",
     "VIEW": "Voir l'horaire",
+    "RESET" : "Réinitialiser l'horaire",
     "PAUSE": "Mettre en pause l'horaire",
     "UNPAUSE": "Redémarrer l'horaire",
     "TEST": "Essayer l'horaire"

@@ -33,7 +33,11 @@ block content
                     i #{row.nextRunTimeLabel}
                 td(title=row.dashboards) #{row.dashboards}
                 td(title=row.userGroupId) #{row.userGroupName}
-                td #{row.is_running}
+                td
+                  if row.is_running
+                    span #{t('OPTIONS.YES')}
+                  else
+                    span #{t('OPTIONS.NO')}
                 td(title=row.created) #{row.createdLabel}
                 td
                   .dropdown.dropdown-right
@@ -53,6 +57,13 @@ block content
                         a(href=triggerUrl).text-success
                           i.icon.icon-arrow-right
                           span(style="padding-left:0.6em;") #{t('ACTIONS.TRIGGER')}
+
+                      if row.is_running
+                        li.menu-item
+                          - var resetUrl = `/schedules/${row.id}/reset`;
+                          a(href=resetUrl).text-warning
+                            i.icon.icon-arrow-down
+                            span(style="padding-left:0.6em;") #{t('ACTIONS.RESET')}
 
                       li.menu-item
                         - var testUrl = `/schedules/${row.id}/test`;

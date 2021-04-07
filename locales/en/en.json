@@ -40,6 +40,7 @@
     "GROUP_SELECT": "Choose a User Group",
     "GROUP": "User Group",
     "INCLUDE_GRAPHS" : "Include graphs in PDF output",
+    "IS_RUNNING_RESET" : "Reset the is_running flag.",
     "LAST_RUN": "Last Run",
     "LOG" : "Schedule Log",
     "NEXT_RUN": "Next Run",
@@ -60,6 +61,7 @@
     "EDIT": "Edit Schedule",
     "VIEW": "View Schedule",
     "PAUSE": "Pause Schedule",
+    "RESET" : "Reset Schedule",
     "UNPAUSE": "Unpause Schedule",
     "TEST" : "Test Schedule"
   },
