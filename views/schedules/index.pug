@@ -13,6 +13,7 @@ block content
               th #{t('SCHEDULES.NEXT_RUN')}
               th #{t('SCHEDULES.DASHBOARDS')}
               th #{t('SCHEDULES.GROUP')}
+              th #{t('SCHEDULES.RUNNING')}
               th #{t('SCHEDULES.CREATED')}
               th #{t('SCHEDULES.ACTIONS')}
           tbody
@@ -32,6 +33,7 @@ block content
                     i #{row.nextRunTimeLabel}
                 td(title=row.dashboards) #{row.dashboards}
                 td(title=row.userGroupId) #{row.userGroupName}
+                td #{row.is_running}
                 td(title=row.created) #{row.createdLabel}
                 td
                   .dropdown.dropdown-right
