@@ -1,0 +1,36 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 99
+  ignore:
+  - dependency-name: cron-parser
+    versions:
+    - 3.4.0
+  - dependency-name: eslint
+    versions:
+    - 7.22.0
+    - 7.24.0
+  - dependency-name: i18next
+    versions:
+    - 19.8.6
+    - 19.8.8
+    - 19.8.9
+    - 19.9.0
+    - 20.0.0
+    - 20.1.0
+    - 20.2.0
+  - dependency-name: better-sqlite3
+    versions:
+    - 7.1.4
+  - dependency-name: ioredis
+    versions:
+    - 4.24.2
+    - 4.24.3
+    - 4.24.4
+  - dependency-name: delay
+    versions:
+    - 4.4.1
