@@ -112,10 +112,10 @@
     moment-timezone "^0.5.26"
     pretty-ms "^7.0.0"
 
-"@ima-worldhealth/dhis2-api@^0.4.0":
-  version "0.4.1"
-  resolved "https://registry.npmjs.org/@ima-worldhealth/dhis2-api/-/dhis2-api-0.4.1.tgz#7f3673d89b2a4ee28771d0ffe72b0996c8ec3609"
-  integrity sha512-hzY3aM/xtDFmP9jcNhFiPuMdH1ORWCIUq2RZbiNC9LeNtB/MRu6GW6T8woz/sEBV9rvsWrXuQXd7vC2OksKi+Q==
+"@ima-worldhealth/dhis2-api@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/dhis2-api/-/dhis2-api-0.5.0.tgz#cb404f241759bc9a9ff8e497fcbffbdb31264ea0"
+  integrity sha512-SeSyU78ia6R9CR0ic9eSq7KL5FqWYHDTwC3L+9+ZVTFhAwlGwphFF5x4YErdeHE1HZifNk12+IuUwNKsXCVp2A==
   dependencies:
     axios "^0.21.0"
     debug "^4.1.1"
