@@ -2448,10 +2448,10 @@ i18next-node-fs-backend@^2.1.1:
     js-yaml "3.13.1"
     json5 "2.0.0"
 
-i18next@^20.2.1:
-  version "20.5.0"
-  resolved "https://registry.npmjs.org/i18next/-/i18next-20.5.0.tgz#e3729b325d8ed62496a5e14bae9716d31a113eb5"
-  integrity sha512-Mdw2e60XndOKSG0Ceta5R+902/pgwHHkqOhQ7+X4223RmCl5ItatLyx06jqiknGZFe3lRU/x6TAdF9aLL6BQ/Q==
+i18next@^21.0.2:
+  version "21.0.2"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.0.2.tgz#a394cbd0cc1879a9ad7a4a979a222d12033022cc"
+  integrity sha512-cSjRitffS1xm90YgPFTaqut89Y4Oc2i4aiCmAuhxHPryYdKzSIGl1YSv8PzlW+UPFOKRIUCOYZ5Rn+aUXKq/qQ==
   dependencies:
     "@babel/runtime" "^7.12.0"
 
