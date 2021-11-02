@@ -11,7 +11,7 @@ const RedisStore = require('connect-redis')(session);
 
 const i18next = require('i18next');
 const i18nextBackend = require('i18next-node-fs-backend');
-const i18nextMiddleware = require('i18next-express-middleware');
+const i18nextMiddleware = require('i18next-http-middleware');
 const path = require('path');
 
 const healthcheck = require('./lib/healthcheck');
