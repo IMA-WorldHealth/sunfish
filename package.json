@@ -33,7 +33,7 @@
   "devDependencies": {
     "ava": "^3.1.0",
     "eslint": "^8.1.0",
-    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.20.2",
     "release-it": "^14.0.1"
   },
