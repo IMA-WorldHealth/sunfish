@@ -85,13 +85,13 @@
   integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
 
 "@ima-worldhealth/coral@^2.0.0":
-  version "2.8.0"
-  resolved "https://registry.npmjs.org/@ima-worldhealth/coral/-/coral-2.8.0.tgz#aae26078894f91b1ae82650bfbf9d6cc90773e51"
-  integrity sha512-y5jG+Za5Nry90Nkj5gC4R52/mxm1xTKbWUaOd7VPw+KX1Vu3AOhOBAYwuwHtN9aZ61Dacpf8P4lLNhh0q25HEQ==
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/coral/-/coral-2.8.1.tgz#7395a2fc7ac30640664f8d448a6707f2a2435867"
+  integrity sha512-sVp1jswBSNvATMHbFENqMqsw7QZILMlrWPvs9BT4H0MMrlOh2oNNF/02a5jVA+Y5bH0GAELN/1Tz8/Bx6Wgaqg==
   dependencies:
     debug "^4.1.1"
     inline-source "^7.2.0"
-    puppeteer "^12.0.0"
+    puppeteer "^13.0.0"
     puppeteer-cluster "^0.22.0"
 
 "@ima-worldhealth/cron-scheduler@^1.4.0":
@@ -4000,10 +4000,10 @@ puppeteer-core@^12.0.0:
     unbzip2-stream "1.4.3"
     ws "8.2.3"
 
-puppeteer@^12.0.0:
-  version "12.0.0"
-  resolved "https://registry.npmjs.org/puppeteer/-/puppeteer-12.0.0.tgz#38544c9a608c79ded84bb4225af26d2d42c988cf"
-  integrity sha512-a+vLxtwuDLUIq8Vz8X5bX+YMhcQrgyfq0Jo5Wcm49EfUawgCxeCN9/rUAS3VdAAiQZ1PKiv9pGyQN8jj1ypecQ==
+puppeteer@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-13.0.0.tgz#f241d9bbbe5c8388da922f4f6ea3f84866e17f81"
+  integrity sha512-kZfGAieIVSo4bFqYuvY2KvhgP9txzmPbbnpZIzLlfdt8nEu9evXEwsbBt1BHocVQM4fJmCiS+FRyw7c8aWadNg==
   dependencies:
     debug "4.3.2"
     devtools-protocol "0.0.937139"
