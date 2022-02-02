@@ -2391,9 +2391,9 @@ human-signals@^2.1.0:
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
 i18next-http-middleware@^3.1.4:
-  version "3.1.5"
-  resolved "https://registry.npmjs.org/i18next-http-middleware/-/i18next-http-middleware-3.1.5.tgz#47e5fbfa6f1b666b5ed7cb3fcadc4dd18b8e1945"
-  integrity sha512-kk67719/uiURzRI9fhdfWjrM05ycXyPHHxGmqnFIsw55yHqEbfPgTl2JEA32lxYJclrr4qY2ifd/VVer4l+WMw==
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/i18next-http-middleware/-/i18next-http-middleware-3.1.6.tgz#d6c02fa806305f516ac05c11f0f3076f72cb3e44"
+  integrity sha512-hCsOHePc+zW3t4BqYVOBZy/WBeoJiUILuc9h+agT2WkAowJQyKUDuTRKG8W6thqDqE8XWtluqEHnR8lYkXFcnQ==
 
 i18next-node-fs-backend@^2.1.1:
   version "2.1.3"
