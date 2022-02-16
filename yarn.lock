@@ -109,10 +109,10 @@
     release-it "^14.0.1"
     shortid "^2.2.14"
 
-"@ima-worldhealth/dhis2-crawler@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.npmjs.org/@ima-worldhealth/dhis2-crawler/-/dhis2-crawler-0.12.0.tgz#8cf732af5559ae284bf21333a3f1b21926e1e8eb"
-  integrity sha512-oQrw1zWWuRqVOxWYKfb0X0Bvb9nYueEjalB/T6WGY3pVQVxslYXUSkyYWl1GPK1mQu0iPooAxo0TBpikr9EaQg==
+"@ima-worldhealth/dhis2-crawler@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/dhis2-crawler/-/dhis2-crawler-0.13.0.tgz#e5b3884695bda5ed2a8ec1b8250100cea2592fbf"
+  integrity sha512-MtzN8vQp7+g6cC4v76CmtQJ6kfSVcHVLrQ24qJejOjzWO4z1G6ivHu59qqdcMJG4n0/+MkH0uJIZGw2So+BDPA==
   dependencies:
     debug "^4.1.1"
     html2canvas "^1.1.2"
