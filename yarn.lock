@@ -78,14 +78,14 @@
   integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
 
 "@ima-worldhealth/coral@^2.0.0":
-  version "2.9.2"
-  resolved "https://registry.npmjs.org/@ima-worldhealth/coral/-/coral-2.9.2.tgz#08dae4665ddcf83fdf9f1d4a5ab5039726b516b1"
-  integrity sha512-RFUsALntuSN5EcCRRKoHzVapyDO42pcgq4UOcdO8PS9HyGaRSMXMFURWRjqJHTM/q03feVMZ7UOUX0O83r0ztg==
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/coral/-/coral-2.10.0.tgz#a22e8aba6a3c3af3127d48b517ff6ed34f951181"
+  integrity sha512-bTcXNtw6vLD+QF9tsRm2hsQbzBNFwhK1IfIxBGTnI20sUUaHomr/kJPgz7KuqWTrlmwcDt/VsfL1FgUhsY8nIw==
   dependencies:
     debug "^4.1.1"
     inline-source "^7.2.0"
     puppeteer "^13.0.0"
-    puppeteer-cluster "^0.22.0"
+    puppeteer-cluster "^0.23.0"
 
 "@ima-worldhealth/cron-scheduler@^1.4.0":
   version "1.8.0"
@@ -3907,12 +3907,12 @@ puppeteer-autoscroll-down@^1.0.0:
   resolved "https://registry.npmjs.org/puppeteer-autoscroll-down/-/puppeteer-autoscroll-down-1.0.0.tgz#fc8b5d2ab75f0923015266b27ad32f4bf43fac8d"
   integrity sha512-ONCie43w1FQ//+xSKK90WJIKDZ0oRM1++3zGOQOiI3BukbyBwHENAyz+jQ7UWOy0gQMZeHRctcDd1ke76LnxuA==
 
-puppeteer-cluster@^0.22.0:
-  version "0.22.0"
-  resolved "https://registry.npmjs.org/puppeteer-cluster/-/puppeteer-cluster-0.22.0.tgz#4ab214671f414f15ad6a94a4b61ed0b4172e86e6"
-  integrity sha512-hmydtMwfVM+idFIDzS8OXetnujHGre7RY3BGL+3njy9+r8Dcu3VALkZHfuBEPf6byKssTCgzxU1BvLczifXd5w==
+puppeteer-cluster@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/puppeteer-cluster/-/puppeteer-cluster-0.23.0.tgz#da3f5c07de8a3069962bd9af6ee1767ba08fdbaf"
+  integrity sha512-108terIWDzPrQopmoYSPd5yDoy3FGJ2dNnoGMkGYPs6xtkdhgaECwpfZkzaRToMQPZibUOz0/dSSGgPEdXEhkQ==
   dependencies:
-    debug "^4.1.1"
+    debug "^4.3.3"
 
 puppeteer-core@^13.0.0:
   version "13.4.0"
