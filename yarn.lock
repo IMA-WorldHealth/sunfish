@@ -88,9 +88,9 @@
     puppeteer-cluster "^0.23.0"
 
 "@ima-worldhealth/cron-scheduler@^1.4.0":
-  version "1.8.1"
-  resolved "https://registry.npmjs.org/@ima-worldhealth/cron-scheduler/-/cron-scheduler-1.8.1.tgz#d4099aad8bdfcfed9d5bdd40ab0ee9e78769596c"
-  integrity sha512-EZIVD9AnhoVcfYVfJYabu5iqeoe9C2y/jP1dl48xFZzpcgZ2L1iJ3MBzmeSchtPQc7e2LAUorKwxxYbBdb8Etw==
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/cron-scheduler/-/cron-scheduler-1.8.2.tgz#90f558a5776e0ea1cee83d594f5f443961e4d006"
+  integrity sha512-K24TWPXDQ4GL0HMQTRtg5iURfKs340to4da3Egg51cpEJKjHf9ZUbntLX2fuPlff3lCgNMbMaN2eb3XQnz02bA==
   dependencies:
     any-promise "^1.3.0"
     cron-converter "^1.0.0"
