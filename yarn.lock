@@ -99,9 +99,9 @@
     pretty-ms "^7.0.0"
 
 "@ima-worldhealth/dhis2-api@^0.5.2":
-  version "0.5.6"
-  resolved "https://registry.npmjs.org/@ima-worldhealth/dhis2-api/-/dhis2-api-0.5.6.tgz#8839b941e7575dfc572f5e664cea0597a16f983b"
-  integrity sha512-rxjTaZA/tTwdN0ItaBXKI7WxUU1u7rFLh3db+fhmkyTxavDue99L62U9hMBz3xUtVoREgswrLEsmHAuV3z/H1A==
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/@ima-worldhealth/dhis2-api/-/dhis2-api-0.5.7.tgz#892ca3057b2373be2e3085f27f48d39fe2113c26"
+  integrity sha512-ypSznz7E2iPI6pRqnvarJLixZp0m8AqDkUjmiTF9xJePRhRUDCqSJwYf031AIglmUfmBwUPe7ct2BmSKBL6Wmg==
   dependencies:
     axios "^0.26.0"
     debug "^4.1.1"
