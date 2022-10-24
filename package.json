@@ -16,7 +16,7 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.15.6",
     "helmet": "^5.0.1",
-    "i18next": "^21.4.0",
+    "i18next": "^22.0.2",
     "i18next-http-middleware": "^3.1.4",
     "i18next-node-fs-backend": "^2.1.1",
     "ioredis": "^5.0.3",
