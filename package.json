@@ -6,7 +6,7 @@
     "@ima-worldhealth/dhis2-crawler": "^0.14.0",
     "@sendgrid/mail": "^7.1.1",
     "better-sqlite3": "^7.0.1",
-    "connect-redis": "^6.0.0",
+    "connect-redis": "^7.0.0",
     "cron-parser": "^4.1.0",
     "dayjs": "^1.8.9",
     "debug": "^4.1.1",
